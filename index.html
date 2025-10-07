@@ -1,0 +1,2631 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Shop Header</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #ffffff;
+        }
+
+        /* Адаптивна рамка для header */
+        .header-frame {
+            width: 90%;
+            max-width: 1313px;
+            height: auto;
+            min-height: 138px;
+            position: relative;
+            margin: 48px auto;
+            border: 1px solid #ffffff;
+            opacity: 1;
+            box-sizing: border-box;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        header {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .social {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 0;
+            flex: 1;
+            justify-content: flex-start;
+        }
+
+        .social img {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .social img:hover {
+            transform: scale(1.1);
+        }
+
+        .social img.twitter {
+            width: 22px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            flex: 1;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .logo-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            /* Фіксована відстань 3мм */
+        }
+
+        .logo-images {
+            position: relative;
+            width: 32px;
+            height: 32px;
+        }
+
+        .logo img.bg {
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .logo img.icon {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: clamp(20px, 4vw, 30px);
+            color: rgb(185, 39, 112);
+            white-space: nowrap;
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+            margin-right: 0;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .icons img {
+            width: 22px;
+            height: 22px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-line {
+            width: 100%;
+            height: 0px;
+            border: 1px solid rgba(114, 113, 116, 0.2);
+            margin: 20px auto 0 auto;
+        }
+
+        nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: clamp(20px, 3vw, 40px);
+            padding: 0;
+            margin: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav ul li a:hover {
+            color: rgb(185, 39, 112);
+        }
+
+        .dropdown-icon {
+            width: 12px;
+            height: 12px;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+
+        /* Медіа-запити для адаптивності */
+        @media (max-width: 768px) {
+            .header-frame {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .social,
+            .icons {
+                justify-content: center;
+                flex: none;
+            }
+
+            .logo {
+                order: -1;
+                margin: 5px 0;
+            }
+
+            .nav-line {
+                margin: 15px auto 0 auto;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-frame {
+                margin: 20px auto;
+                padding: 10px;
+            }
+
+            .social {
+                gap: 10px;
+            }
+
+            .icons {
+                gap: 10px;
+            }
+
+            .logo-content {
+                gap: 8px;
+            }
+
+            nav ul {
+                gap: 10px 20px;
+            }
+
+            nav ul li a {
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .header-frame {
+                margin: 48px auto;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .gray-rectangle {
+            width: 100%;
+            height: 861px;
+            background-color: rgba(231, 232, 233, 1);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .white-top-rectangle {
+            position: absolute;
+            width: 1292px;
+            height: 566px;
+            background-color: white;
+            bottom: -380px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            border-radius: 8px;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .white-top-left {
+            width: 50%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 60px 40px 0 40px;
+            position: relative;
+        }
+
+        .white-top-left img {
+            width: 85px;
+            height: 93px;
+            object-fit: contain;
+            flex-shrink: 0;
+            margin-top: 10px;
+        }
+
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quote-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: #000000;
+            position: absolute;
+            bottom: 240px;
+            left: 40px;
+            right: 40px;
+        }
+
+        .description-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 120%;
+            letter-spacing: 0%;
+            color: rgba(80, 78, 74, 1);
+            position: absolute;
+            bottom: 160px;
+            left: 40px;
+            right: 40px;
+        }
+
+        .additional-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 120%;
+            letter-spacing: 0%;
+            color: rgba(80, 78, 74, 1);
+            position: absolute;
+            bottom: 90px;
+            left: 40px;
+            right: 40px;
+            white-space: nowrap;
+        }
+
+        .name-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: #000000;
+        }
+
+        .position-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: #000000;
+        }
+
+        .white-top-right {
+            width: 50%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .white-top-right img {
+            width: 646px;
+            height: 566px;
+            object-fit: cover;
+        }
+
+        .discount-content {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 40px;
+            z-index: 3;
+        }
+
+        .discount-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .discount-description {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            text-align: left;
+            white-space: nowrap;
+            margin-bottom: 20px;
+        }
+
+        .discount-button {
+            width: 175px;
+            height: 60px;
+            background-color: rgba(185, 39, 112, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 1;
+            z-index: 2;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .discount-button:hover {
+            background-color: rgba(165, 29, 92, 1);
+        }
+
+        .discount-button-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .image-container {
+            position: absolute;
+            width: 651px;
+            height: 531px;
+            top: 50%;
+            right: 50px;
+            transform: translateY(-50%);
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .text-container {
+            position: absolute;
+            width: 436px;
+            height: 61px;
+            top: 295px;
+            left: 80px;
+            opacity: 1;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 50px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: #000000;
+            z-index: 2;
+        }
+
+        .text-line {
+            display: block;
+            white-space: nowrap;
+        }
+
+        .paragraph-1 {
+            position: absolute;
+            width: 640px;
+            height: 49px;
+            top: 440px;
+            left: 80px;
+            opacity: 1;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: rgba(80, 78, 74, 1);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            z-index: 2;
+        }
+
+        .paragraph-2 {
+            position: absolute;
+            width: 640px;
+            height: 21px;
+            top: 490px;
+            left: 80px;
+            opacity: 1;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            color: rgba(80, 78, 74, 1);
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            z-index: 2;
+        }
+
+        .button {
+            position: absolute;
+            width: 174px;
+            height: 60px;
+            top: 540px;
+            left: 80px;
+            background-color: rgba(185, 39, 112, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 1;
+            z-index: 2;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: rgba(165, 29, 92, 1);
+        }
+
+        .button-text {
+            width: 135px;
+            height: 22px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        /* Білий прямокутник знизу */
+        .white-rectangle {
+            width: 100%;
+            height: 500px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Адаптивність для мобільних пристроїв */
+        @media (max-width: 1400px) {
+            .white-top-rectangle {
+                width: 1000px;
+                height: 438px;
+                bottom: -320px;
+            }
+
+            .white-top-right img {
+                width: 500px;
+                height: 438px;
+            }
+
+            .discount-content {
+                left: 30px;
+            }
+
+            .discount-text {
+                font-size: 32px;
+                margin-bottom: 15px;
+            }
+
+            .discount-description {
+                font-size: 15px;
+                margin-bottom: 15px;
+            }
+
+            .discount-button {
+                width: 160px;
+                height: 55px;
+            }
+
+            .discount-button-text {
+                font-size: 16px;
+            }
+
+            .quote-text {
+                font-size: 32px;
+                bottom: 200px;
+            }
+
+            .description-text {
+                font-size: 15px;
+                bottom: 140px;
+            }
+
+            .additional-text {
+                font-size: 15px;
+                bottom: 80px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .white-top-rectangle {
+                width: 800px;
+                height: 350px;
+                bottom: -260px;
+            }
+
+            .white-top-right img {
+                width: 400px;
+                height: 350px;
+            }
+
+            .discount-content {
+                left: 25px;
+            }
+
+            .discount-text {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+
+            .discount-description {
+                font-size: 14px;
+                margin-bottom: 12px;
+            }
+
+            .discount-button {
+                width: 150px;
+                height: 50px;
+            }
+
+            .discount-button-text {
+                font-size: 15px;
+            }
+
+            .quote-text {
+                font-size: 28px;
+                bottom: 180px;
+            }
+
+            .description-text {
+                font-size: 14px;
+                bottom: 120px;
+            }
+
+            .additional-text {
+                font-size: 14px;
+                bottom: 70px;
+            }
+
+            .image-container {
+                width: 510px;
+                height: 416px;
+                right: 30px;
+            }
+
+            .text-container {
+                font-size: 40px;
+                left: 60px;
+                width: 350px;
+                top: 240px;
+            }
+
+            .paragraph-1 {
+                font-size: 15px;
+                left: 60px;
+                width: 500px;
+                top: 320px;
+            }
+
+            .paragraph-2 {
+                font-size: 15px;
+                left: 60px;
+                width: 500px;
+                top: 370px;
+            }
+
+            .button {
+                left: 60px;
+                top: 420px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gray-rectangle {
+                height: 700px;
+            }
+
+            .white-top-rectangle {
+                width: 600px;
+                height: auto;
+                bottom: -600px;
+                flex-direction: column;
+            }
+
+            .white-top-left {
+                width: 100%;
+                height: 400px;
+                flex-direction: column;
+                gap: 15px;
+                padding: 30px 20px;
+                align-items: center;
+            }
+
+            .white-top-left img {
+                margin-top: 0;
+                order: 1;
+            }
+
+            .text-content {
+                order: 2;
+                margin-top: 10px;
+                gap: 5px;
+            }
+
+            .quote-text {
+                position: static;
+                order: 3;
+                margin-top: 20px;
+                font-size: 22px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .description-text {
+                position: static;
+                order: 4;
+                margin-top: 15px;
+                font-size: 13px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .additional-text {
+                position: static;
+                order: 5;
+                margin-top: 15px;
+                font-size: 13px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                white-space: normal;
+            }
+
+            .discount-content {
+                left: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+                transform: none;
+                top: 50%;
+            }
+
+            .discount-text {
+                font-size: 22px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .discount-description {
+                font-size: 13px;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            .discount-button {
+                width: 140px;
+                height: 45px;
+            }
+
+            .discount-button-text {
+                font-size: 14px;
+            }
+
+            .white-top-right {
+                width: 100%;
+                height: 300px;
+            }
+
+            .white-top-right img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .image-container {
+                width: 382px;
+                height: 312px;
+                right: 20px;
+                top: calc(50% + 120px);
+            }
+
+            .text-container {
+                font-size: 30px;
+                left: 30px;
+                width: 260px;
+                top: 180px;
+            }
+
+            .paragraph-1 {
+                font-size: 13px;
+                left: 30px;
+                width: 400px;
+                top: 240px;
+            }
+
+            .paragraph-2 {
+                font-size: 13px;
+                left: 30px;
+                width: 400px;
+                top: 270px;
+            }
+
+            .button {
+                left: 30px;
+                top: 310px;
+                width: 150px;
+                height: 50px;
+            }
+
+            .button-text {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gray-rectangle {
+                height: 600px;
+            }
+
+            .white-top-rectangle {
+                width: 350px;
+                height: auto;
+                bottom: -500px;
+                flex-direction: column;
+            }
+
+            .white-top-left {
+                width: 100%;
+                height: 350px;
+                flex-direction: column;
+                gap: 10px;
+                padding: 20px 15px;
+                align-items: center;
+            }
+
+            .white-top-left img {
+                width: 60px;
+                height: 65px;
+                margin-top: 0;
+                order: 1;
+            }
+
+            .text-content {
+                order: 2;
+                margin-top: 8px;
+                gap: 3px;
+            }
+
+            .quote-text {
+                position: static;
+                order: 3;
+                margin-top: 15px;
+                font-size: 18px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .description-text {
+                position: static;
+                order: 4;
+                margin-top: 12px;
+                font-size: 11px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .additional-text {
+                position: static;
+                order: 5;
+                margin-top: 12px;
+                font-size: 11px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+                white-space: normal;
+            }
+
+            .name-text {
+                font-size: 16px;
+            }
+
+            .position-text {
+                font-size: 14px;
+            }
+
+            .discount-content {
+                left: 15px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                width: 100%;
+                transform: none;
+                top: 50%;
+            }
+
+            .discount-text {
+                font-size: 18px;
+                margin-bottom: 8px;
+                text-align: center;
+            }
+
+            .discount-description {
+                font-size: 11px;
+                margin-bottom: 8px;
+                text-align: center;
+            }
+
+            .discount-button {
+                width: 120px;
+                height: 40px;
+            }
+
+            .discount-button-text {
+                font-size: 12px;
+            }
+
+            .white-top-right {
+                width: 100%;
+                height: 200px;
+            }
+
+            .white-top-right img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .image-container {
+                width: 255px;
+                height: 208px;
+                right: 10px;
+                top: calc(50% + 120px);
+            }
+
+            .text-container {
+                font-size: 24px;
+                left: 15px;
+                width: 200px;
+                top: 150px;
+            }
+
+            .paragraph-1 {
+                font-size: 11px;
+                left: 15px;
+                width: 280px;
+                top: 200px;
+            }
+
+            .paragraph-2 {
+                font-size: 11px;
+                left: 15px;
+                width: 280px;
+                top: 220px;
+            }
+
+            .button {
+                left: 15px;
+                top: 250px;
+                width: 130px;
+                height: 45px;
+            }
+
+            .button-text {
+                font-size: 14px;
+            }
+        }
+
+        /* Новий розділ з валізками */
+        .suitcases-section {
+            width: 100%;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 30px 0; /* Додано відступ 30px */
+        }
+
+        .suitcases-container {
+            width: 90%;
+            max-width: 1300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .suitcases-title {
+            font-weight: 900;
+            font-size: 40px;
+            color: black;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .suitcases-subtitle {
+            font-weight: 400;
+            font-size: 17px;
+            color: rgba(80, 78, 74, 1);
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 348px;
+        }
+
+        .suitcases-images {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: nowrap; /* важливо - прибрали перенос */
+            align-items: flex-end;
+        }
+
+        .suitcases-images img {
+            width: 300px;  /* трохи зменшили для desktop */
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Адаптивність для розділу з валізками */
+        @media (max-width: 1200px) {
+            .suitcases-images img {
+                width: 260px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .suitcases-images {
+                flex-wrap: wrap;
+            }
+            .suitcases-images img {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .suitcases-images img {
+                width: 200px;
+            }
+            .suitcases-title {
+                font-size: 32px;
+            }
+            .suitcases-subtitle {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .suitcases-images {
+                flex-direction: column;
+                align-items: center;
+            }
+            .suitcases-images img {
+                width: 280px;
+            }
+            .suitcases-title {
+                font-size: 28px;
+            }
+            .suitcases-subtitle {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Selected Products Section */
+        .selected-products-section {
+            width: 100%;
+            background-color: white;
+            padding: 30px 0; /* Додано відступ 30px */
+            box-sizing: border-box;
+        }
+
+        .selected-products-container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .selected-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: rgba(0, 0, 0, 1);
+            margin-bottom: 20px;
+        }
+
+        .selected-subheading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: rgba(80, 78, 74, 1);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .products-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            flex-wrap: nowrap; /* Змінено на nowrap для комп'ютерної версії */
+        }
+
+        .product-item {
+            position: relative;
+            width: 280px; /* Зменшено ширину для 4 елементів в ряд */
+            margin-bottom: 30px;
+            flex-shrink: 0;
+        }
+
+        .products-container img {
+            width: 100%;
+            height: 350px; /* Зменшено висоту зображень */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+        }
+
+        .sale-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 54px;
+            height: 28px;
+            background: rgba(185, 39, 112, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .product-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: rgba(0, 0, 0, 1);
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .product-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: rgba(0, 0, 0, 1);
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .add-to-cart-btn {
+            width: 156px;
+            height: 40px;
+            background: rgba(185, 39, 112, 1);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s;
+            border-radius: 4px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: rgba(165, 29, 92, 1);
+        }
+
+        /* Адаптивність для Selected Products */
+        @media (max-width: 1200px) {
+            .products-container {
+                gap: 15px;
+            }
+            .product-item {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .products-container {
+                flex-wrap: wrap; /* Дозволяємо перенос на планшетах */
+                gap: 20px;
+            }
+            .product-item {
+                width: 250px;
+            }
+            .products-container img {
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .selected-heading {
+                font-size: 32px;
+            }
+            .selected-subheading {
+                font-size: 15px;
+            }
+            .products-container {
+                gap: 15px;
+            }
+            .product-item {
+                width: 220px;
+            }
+            .products-container img {
+                height: 280px;
+            }
+            .product-text,
+            .product-price {
+                font-size: 17px;
+            }
+            .add-to-cart-btn {
+                width: 140px;
+                height: 35px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .selected-heading {
+                font-size: 28px;
+            }
+            .selected-subheading {
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+            .products-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
+            .product-item {
+                width: 280px;
+            }
+            .products-container img {
+                height: 320px;
+            }
+            .product-text,
+            .product-price {
+                font-size: 18px;
+            }
+            .add-to-cart-btn {
+                width: 150px;
+                height: 38px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .selected-heading {
+                font-size: 24px;
+            }
+            .selected-subheading {
+                font-size: 13px;
+            }
+            .product-item {
+                width: 260px;
+            }
+            .products-container img {
+                height: 300px;
+            }
+        }
+
+        /* Offer Section */
+        .offer-section {
+            width: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0; /* Додано відступ 30px */
+        }
+
+        .offer-container {
+            width: 90%;
+            max-width: 1300px;
+            height: 407px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-image-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .offer-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .offer-left-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .offer-big-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 180px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .offer-small-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .offer-right-section {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .offer-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .offer-description {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .offer-description-line1 {
+            margin-bottom: 5px;
+        }
+
+        .offer-button-container {
+            margin-top: 15px;
+        }
+
+        .offer-button {
+            width: 200px;
+            height: 60px;
+            background: rgba(185, 39, 112, 1);
+            border: none;
+            border-radius: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            text-transform: uppercase;
+            cursor: pointer;
+            opacity: 1;
+            transition: background-color 0.3s;
+        }
+
+        .offer-button:hover {
+            background: rgba(165, 29, 92, 1);
+        }
+
+        /* Адаптивність для Offer Section */
+        @media (max-width: 1200px) {
+            .offer-container {
+                height: 350px;
+            }
+            .offer-big-text {
+                font-size: 150px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .offer-container {
+                height: 300px;
+            }
+            .offer-big-text {
+                font-size: 120px;
+            }
+            .offer-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .offer-container {
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .offer-image-container {
+                width: 100%;
+                height: 50vh;
+                min-height: 250px;
+            }
+
+            .offer-left-section {
+                position: static;
+                width: 100%;
+                height: auto;
+                padding: 30px 20px;
+                background-color: white;
+                order: 1;
+            }
+
+            .offer-right-section {
+                position: static;
+                width: 100%;
+                height: auto;
+                padding: 20px;
+                background-color: white;
+                order: 2;
+            }
+
+            .offer-big-text {
+                color: #333;
+                font-size: 120px;
+                margin-bottom: 15px;
+            }
+
+            .offer-small-text {
+                color: #333;
+                font-size: 18px;
+                white-space: normal;
+            }
+
+            .offer-title {
+                color: #333;
+                font-size: 32px;
+            }
+
+            .offer-description {
+                color: #333;
+                font-size: 16px;
+                white-space: normal;
+            }
+
+            .offer-button-container {
+                margin-top: 30px;
+            }
+
+            .offer-button {
+                background: rgba(185, 39, 112, 1);
+                color: white;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .offer-big-text {
+                font-size: 80px;
+            }
+            .offer-small-text {
+                font-size: 16px;
+            }
+            .offer-title {
+                font-size: 28px;
+            }
+            .offer-description {
+                font-size: 14px;
+            }
+            .offer-button {
+                width: 180px;
+                height: 50px;
+                font-size: 16px;
+            }
+        }
+
+        /* New Products Section */
+        .new-products-section {
+            width: 100%;
+            background-color: white;
+            padding: 30px 0; /* Додано відступ 30px */
+            box-sizing: border-box;
+        }
+
+        .new-products-container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .new-products-header {
+            position: relative;
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            margin: 0;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .new-products-subtext {
+            position: relative;
+            color: rgba(80, 78, 74, 1);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background: none;
+            margin-top: 20px;
+        }
+
+        .new-products-images {
+            position: relative;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .new-product-wrapper {
+            position: relative;
+        }
+
+        .new-product-image {
+            width: 296px;
+            height: 400px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .new-sale-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 54px;
+            height: 28px;
+            background: rgba(185, 39, 112, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: uppercase;
+        }
+
+        .new-product-text {
+            margin-top: 15px;
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-align: center;
+        }
+
+        .new-product-price {
+            margin-top: 15px;
+            color: #000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-align: center;
+        }
+
+        .new-view-button {
+            width: 156px;
+            height: 40px;
+            background: rgba(185, 39, 112, 1);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px auto 0;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .new-view-button:hover {
+            background-color: rgba(165, 29, 92, 1);
+        }
+
+        /* Адаптивність для New Products Section */
+        @media (max-width: 1200px) {
+            .new-products-images {
+                flex-wrap: wrap;
+            }
+            .new-product-image {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .new-product-image {
+                width: 250px;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .new-products-container {
+                width: 100%;
+                height: auto;
+                min-height: 300px;
+                padding: 20px;
+                overflow-x: hidden;
+            }
+
+            .new-products-header {
+                position: relative;
+                font-size: 28px;
+                padding: 15px 0;
+            }
+
+            .new-products-subtext {
+                position: relative;
+                font-size: 15px;
+                margin-top: 10px;
+            }
+
+            .new-products-images {
+                position: relative;
+                flex-direction: column;
+                margin-top: 20px;
+                gap: 20px;
+                overflow-x: hidden;
+            }
+
+            .new-product-image {
+                width: 296px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .new-products-container {
+                padding: 15px;
+            }
+
+            .new-products-header {
+                font-size: 22px;
+                padding: 10px 0;
+            }
+
+            .new-products-subtext {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .new-products-header {
+                font-size: 18px;
+            }
+
+            .new-products-subtext {
+                font-size: 13px;
+            }
+        }
+
+        /* Customers Section */
+        .customers-section {
+            width: 100%;
+            background-color: white;
+            padding: 30px 0; /* Додано відступ 30px */
+            box-sizing: border-box;
+        }
+
+        .customers-container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .customers-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 40px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: black;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .customers-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: black;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .customers-content {
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .customers-rectangles {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: nowrap; /* Змінено на nowrap для комп'ютерної версії */
+        }
+
+        .customer-rectangle {
+            width: 380px; /* Зменшено ширину для 3 елементів в ряд */
+            height: 336px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 1;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .customer-rectangle img {
+            width: 98px;
+            height: 98px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .customer-text-content {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: black;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .customer-text-content p {
+            margin: 5px 0;
+        }
+
+        .customer-name {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: rgba(185, 39, 112, 1);
+            text-align: center;
+        }
+
+        /* Адаптивність для Customers Section */
+        @media (max-width: 1200px) {
+            .customer-rectangle {
+                width: 350px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .customer-rectangle {
+                width: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .customers-rectangles {
+                flex-direction: column;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            .customer-rectangle {
+                width: 420px;
+                height: auto;
+                min-height: 336px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .customers-title {
+                font-size: 28px;
+            }
+            .customers-subtitle {
+                font-size: 15px;
+            }
+            .customer-rectangle {
+                width: 100%;
+                max-width: 350px;
+                padding: 15px;
+            }
+            .customer-text-content {
+                font-size: 15px;
+            }
+            .customer-name {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .customers-title {
+                font-size: 24px;
+            }
+            .customers-subtitle {
+                font-size: 14px;
+            }
+        }
+
+        /* Footer Section */
+        .footer-section {
+            width: 100%;
+            background-color: white;
+            padding: 30px 0; /* Додано відступ 30px */
+            box-sizing: border-box;
+        }
+
+        .footer-header {
+            height: 192px;
+            background: rgba(80, 78, 74, 1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-title {
+            position: absolute;
+            top: 50px;
+            left: 20px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 19px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            z-index: 2;
+            width: auto;
+            text-align: left;
+        }
+
+        .footer-vertical-lines {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+            padding: 10px 0;
+            margin-top: -50px;
+        }
+
+        .footer-line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 10px;
+        }
+
+        .footer-line img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+
+        .footer-horizontal-images {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 40px;
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            padding: 0 10px;
+        }
+
+        .footer-horizontal-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .footer-horizontal-img img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .footer-content {
+            min-height: calc(100vh - 192px);
+            background: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+
+        .footer-links-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 15px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: black;
+            text-align: center;
+        }
+
+        .footer-about-us-container,
+        .footer-interesting-links-container,
+        .footer-achievements-container,
+        .footer-contact-us-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-sub-links {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            align-items: flex-start;
+        }
+
+        .footer-sub-link {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 15px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: black;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        .footer-shipping-section {
+            padding: 0 20px;
+            margin-top: auto;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .footer-shipping-info {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 15px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: black;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .footer-shipping-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-shipping-line {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 15px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: black;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        .footer-contact-items {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 8px;
+        }
+
+        .footer-contact-icon {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #FF69B4;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .footer-contact-text {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 15px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: black;
+        }
+
+        .footer-contact-text-multi {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-copyright {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 14px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: grey;
+            text-align: center;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        /* Адаптивність для Footer Section */
+        @media (max-width: 768px) {
+            .footer-links-container {
+                flex-direction: column;
+                gap: 40px;
+                margin-bottom: 40px;
+            }
+
+            .footer-about-us-container,
+            .footer-interesting-links-container,
+            .footer-achievements-container,
+            .footer-contact-us-container {
+                margin-bottom: 0;
+            }
+
+            .footer-contact-us-container {
+                order: 4;
+            }
+
+            .footer-shipping-section {
+                margin-top: 0;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Комп'ютерна версія - підняти shipping-section на 150px */
+        @media (min-width: 769px) {
+            .footer-shipping-section {
+                margin-top: -150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Адаптивна рамка для header -->
+    <div class="header-frame">
+        <header>
+            <!-- Ліві соціальні іконки -->
+            <div class="social">
+                <a href="#"><img
+                        src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/facebook.png"
+                        alt="Facebook"></a>
+                <a href="#"><img
+                        src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/twitter.png"
+                        alt="Twitter" class="twitter"></a>
+                <a href="#"><img
+                        src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/instagram.png"
+                        alt="Instagram"></a>
+            </div>
+
+            <!-- Центр логотип -->
+            <div class="logo">
+                <div class="logo-content">
+                    <div class="logo-images">
+                        <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/bg.png"
+                            class="bg" alt="">
+                        <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/image.png"
+                            class="icon" alt="">
+                    </div>
+                    <div class="logo-text">BEST SHOP</div>
+                </div>
+            </div>
+
+            <!-- Праві іконки -->
+            <div class="icons">
+                <a href="#"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/user.png"
+                        alt="User"></a>
+                <a href="#"><img
+                        src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/shopping-cart.png"
+                        alt="Cart"></a>
+            </div>
+        </header>
+
+        <!-- Роздільна лінія -->
+        <div class="nav-line"></div>
+
+        <!-- Навігація -->
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Catalog </a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="gray-rectangle">
+        <div class="white-top-rectangle">
+            <div class="white-top-left">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/d1cd40ce6d48283d0926de63f56b548aee9106c4.png"
+                    alt="Додаткове зображення">
+                <div class="text-content">
+                    <div class="name-text">Lillian Bennett</div>
+                    <div class="position-text">Chief Marketing Officer</div>
+                </div>
+                <div class="quote-text">
+                    <div>Aliquam Faucibus</div>
+                    <div>Odionecom</div>
+                </div>
+                <div class="description-text">
+                    <div>Duis vestibulum elit vel neque pharetra vulputate.</div>
+                    <div>Quisque scelerisque nisi urna. Duis rutrum non risus in</div>
+                    <div>imperdiet. Proin molestie accumsan nulla sit.</div>
+                </div>
+                <div class="additional-text">
+                    <div>Namaki duis vestibulum elit vel neque pharetra vulputate.</div>
+                    <div>Quisque scelerisque nisi urna.</div>
+                </div>
+            </div>
+            <div class="white-top-right">
+                <div class="discount-content">
+                    <div class="discount-text">25 % Discount</div>
+                    <div class="discount-description">
+                        <div>Curabitur vulputate arcu odio, ac facilisis diam</div>
+                        <div>accumsan ut. Ut imperdiet et leo in vulputate.</div>
+                    </div>
+                    <div class="discount-button">
+                        <div class="discount-button-text">Get Discount</div>
+                    </div>
+                </div>
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(5).png"
+                    alt="Додаткове зображення">
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/656c36b623decb2b538d17585f8f19fb0ab685a8.png"
+                alt="Валізка">
+        </div>
+        <div class="text-container">
+            <span class="text-line">Smart Styles for</span>
+            <span class="text-line">Every Destination</span>
+        </div>
+        <div class="paragraph-1">
+            Nullam pulvinar felis at metus.
+        </div>
+        <div class="paragraph-2">
+            Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim.
+        </div>
+        <div class="button">
+            <div class="button-text">View All Items</div>
+        </div>
+    </div>
+    <div class="white-rectangle">
+        <!-- Тут може бути додатковий вміст для білого прямокутника -->
+    </div>
+
+    <!-- Новий розділ з валізками -->
+    <div class="suitcases-section">
+        <div class="suitcases-container">
+            <h1 class="suitcases-title">Travel suitcases</h1>
+            <p class="suitcases-subtitle">Duis vestibulum elit vel neque pharetra</p>
+            <div class="suitcases-images">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%201.png" alt="Suitcase 1">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%202.png" alt="Suitcase 2">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%203.png" alt="Suitcase 3">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%204.png" alt="Suitcase 4">
+            </div>
+        </div>
+    </div>
+
+    <!-- Selected Products Section -->
+    <div class="selected-products-section">
+        <div class="selected-products-container">
+            <div class="selected-heading">Selected Products</div>
+            <div class="selected-subheading">Duis vestibulum elit vel neque pharetra</div>
+            
+            <div class="products-container">
+                <div class="product-item">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo.png" alt="Product 1">
+                    <div class="sale-label">SALE</div>
+                    <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
+                    <div class="product-price">$250</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(1).png"
+                        alt="Product 2">
+                    <div class="sale-label">SALE</div>
+                    <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
+                    <div class="product-price">$200</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(2).png"
+                        alt="Product 3">
+                    <div class="sale-label">SALE</div>
+                    <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
+                    <div class="product-price">$300</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+                <div class="product-item">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(3).png"
+                        alt="Product 4">
+                    <div class="sale-label">SALE</div>
+                    <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
+                    <div class="product-price">$350</div>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offer Section -->
+    <div class="offer-section">
+        <div class="offer-container">
+            <div class="offer-image-container">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(4).png"
+                    alt="Зображення">
+            </div>
+
+            <div class="offer-left-section">
+                <div class="offer-big-text">50%</div>
+                <div class="offer-small-text">Curabitur vulputate arcu odio, ac facilisis diam.</div>
+            </div>
+
+            <div class="offer-right-section">
+                <div class="offer-title">Offer Of The Month</div>
+                <div class="offer-description offer-description-line1">Curabitur vulputate arcu odio, ac facilisis diam</div>
+                <div class="offer-description">accumsan ut. Ut imperdiet et leo in vulputate.</div>
+                <div class="offer-button-container">
+                    <button class="offer-button">GET OFFER TODAY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Products Section -->
+    <div class="new-products-section">
+        <div class="new-products-container">
+            <h1 class="new-products-header">New Products Arrival</h1>
+            <p class="new-products-subtext">Duis vestibulum elit vel neque pharetra</p>
+            <div class="new-products-images">
+                <div class="new-product-wrapper">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product1.png"
+                        alt="Product 1" class="new-product-image">
+                    <div class="new-product-text">
+                        <div>Vel vestibulum elit</div>
+                        <div>tuvel euqen.</div>
+                    </div>
+                    <div class="new-product-price">$150</div>
+                    <button class="new-view-button">View Product</button>
+                </div>
+                <div class="new-product-wrapper">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product2.png"
+                        alt="Product 2" class="new-product-image">
+                    <div class="new-sale-badge">SALE</div>
+                    <div class="new-product-text">
+                        <div>Vel vestibulum elit</div>
+                        <div>tuvel euqen.</div>
+                    </div>
+                    <div class="new-product-price">$450</div>
+                    <button class="new-view-button">View Product</button>
+                </div>
+                <div class="new-product-wrapper">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product3.png"
+                        alt="Product 3" class="new-product-image">
+                    <div class="new-product-text">
+                        <div>Vel vestibulum elit</div>
+                        <div>tuvel euqen.</div>
+                    </div>
+                    <div class="new-product-price">$250</div>
+                    <button class="new-view-button">View Product</button>
+                </div>
+                <div class="new-product-wrapper">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product4.png"
+                        alt="Product 4" class="new-product-image">
+                    <div class="new-sale-badge">SALE</div>
+                    <div class="new-product-text">
+                        <div>Vel vestibulum elit</div>
+                        <div>tuvel euqen.</div>
+                    </div>
+                    <div class="new-product-price">$200</div>
+                    <button class="new-view-button">View Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customers Section -->
+    <div class="customers-section">
+        <h1 class="customers-title">Our Grateful Customers</h1>
+        <div class="customers-subtitle">Duis vestibulum elit vel neque pharetra</div>
+        <div class="customers-container">
+            <div class="customers-content">
+                <!-- Тут буде ваш контент -->
+            </div>
+        </div>
+        <div class="customers-rectangles">
+            <div class="customer-rectangle">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/customer1.png"
+                    alt="Customer 1">
+                <div class="customer-text-content">
+                    <p>Curabitur vulputate arcu odio, ac</p>
+                    <p>facilisis diam accumsan ut. Ut mperdiet</p>
+                    <p>et leo in vulputate.</p>
+                </div>
+                <div class="customer-name">Ethan Wade, New York</div>
+            </div>
+            <div class="customer-rectangle">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/customer2.png"
+                    alt="Customer 2">
+                <div class="customer-text-content">
+                    <p>Curabitur vulputate arcu odio, ac</p>
+                    <p>facilisis diam accumsan ut. Ut mperdiet</p>
+                    <p>et leo in vulputate.</p>
+                </div>
+                <div class="customer-name">Jane Reyes, California</div>
+            </div>
+            <div class="customer-rectangle">
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/customer3.png"
+                    alt="Customer 3">
+                <div class="customer-text-content">
+                    <p>Curabitur vulputate arcu odio, ac</p>
+                    <p>facilisis diam accumsan ut. Ut mperdiet</p>
+                    <p>et leo in vulputate.</p>
+                </div>
+                <div class="customer-name">Erica Banks, Miami</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer-section">
+        <div class="footer-header">
+            <div class="footer-title">Our Benefits</div>
+            <div class="footer-vertical-lines">
+                <div class="footer-line">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png"
+                        alt="Line">
+                </div>
+                <div class="footer-line">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png"
+                        alt="Line">
+                </div>
+                <div class="footer-line">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png"
+                        alt="Line">
+                </div>
+                <div class="footer-line">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png"
+                        alt="Line">
+                </div>
+                <div class="footer-line">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png"
+                        alt="Line">
+                </div>
+                <div class="footer-line">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png"
+                        alt="Line">
+                </div>
+                <div class="footer-line">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png"
+                        alt="Line">
+                </div>
+                <div class="footer-line">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png"
+                        alt="Line">
+                </div>
+            </div>
+            <div class="footer-horizontal-images">
+                <div class="footer-horizontal-img">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer1.png"
+                        alt="Footer 1">
+                </div>
+                <div class="footer-horizontal-img">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer2.png"
+                        alt="Footer 2">
+                </div>
+                <div class="footer-horizontal-img">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer3.png"
+                        alt="Footer 3">
+                </div>
+                <div class="footer-horizontal-img">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer4.png"
+                        alt="Footer 4">
+                </div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-links-container">
+                <div class="footer-about-us-container">
+                    <div class="footer-link">About Us</div>
+                    <div class="footer-sub-links">
+                        <div class="footer-sub-link">Organisation</div>
+                        <div class="footer-sub-link">Partners</div>
+                        <div class="footer-sub-link">Clients</div>
+                    </div>
+                </div>
+                <div class="footer-interesting-links-container">
+                    <div class="footer-link">Interesting Links</div>
+                    <div class="footer-sub-links">
+                        <div class="footer-sub-link">Photo Gallery</div>
+                        <div class="footer-sub-link">Our Team</div>
+                        <div class="footer-sub-link">Socials</div>
+                    </div>
+                </div>
+                <div class="footer-achievements-container">
+                    <div class="footer-link">Achievements</div>
+                    <div class="footer-sub-links">
+                        <div class="footer-sub-link">Winning Awards</div>
+                        <div class="footer-sub-link">Press</div>
+                        <div class="footer-sub-link">Our Amazing Clients</div>
+                    </div>
+                </div>
+                <div class="footer-contact-us-container">
+                    <div class="footer-link">Contact Us</div>
+                    <div class="footer-sub-links">
+                        <div class="footer-sub-link">Bendum dolor eu varius. Morbi fermentum velitsodales</div>
+                        <div class="footer-sub-link">egetonec. volutpat orci. Sed ipsum felis, tristique</div>
+                        <div class="footer-sub-link">egestas et, convallis ac velitn consequat nec luctus</div>
+                    </div>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">📞</div>
+                            <div class="footer-contact-text">Phone: (+63) 236 6322</div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">🕒</div>
+                            <div class="footer-contact-text-multi">
+                                <div class="footer-contact-text">Mon - Fri: 10am - 6pm</div>
+                                <div class="footer-contact-text">Sat - Sun: 10am - 6pm</div>
+                            </div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">✉️</div>
+                            <div class="footer-contact-text">public@news.com</div>
+                        </div>
+                        <div class="footer-contact-item">
+                            <div class="footer-contact-icon">📍</div>
+                            <div class="footer-contact-text-multi">
+                                <div class="footer-contact-text">639 Jade Valley,</div>
+                                <div class="footer-contact-text">Washington Dc</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-shipping-section">
+                <div class="footer-shipping-info">Shipping Information</div>
+                <div class="footer-shipping-text">
+                    <div class="footer-shipping-line">Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit
+                        amet erat nec nibh</div>
+                    <div class="footer-shipping-line">rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar,
+                        enim elit porta sapien,</div>
+                    <div class="footer-shipping-line">vel finibus erat felis sed neque. Etiam aliquet neque sagittis erat tincidunt
+                        aliquam.</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">© Copyright 2025</div>
+    </div>
+
+</body>
+
+</html>

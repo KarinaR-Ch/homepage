@@ -200,9 +200,9 @@
             opacity: 0;
         }
 
-        /* Зсув картинок каталогу */
+        /* ЗМІНА: Зсув картинок каталогу на 500px вліво замість 400px */
         .catalog-section .image-row {
-            transform: translateY(280px);
+            transform: translateY(280px) translateX(-500px);
         }
 
         /* Адаптивність */
@@ -271,6 +271,11 @@
             /* НОВИЙ СТИЛЬ: Піднімаємо зображення валізи на 200px в мобільній версії */
             .gray-rectangle .image-container {
                 top: calc(50% - 80px) !important;
+            }
+
+            /* Скидаємо зсув для мобільної версії */
+            .catalog-section .image-row {
+                transform: translateY(280px);
             }
         }
 
@@ -5034,78 +5039,77 @@
                                 <div class="footer-horizontal-img"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer2.png" alt="Footer 2"></div>
                                 <div class="footer-horizontal-img"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer3.png" alt="Footer 3"></div>
                                 <div class="footer-horizontal-img"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer4.png" alt="Footer 4"></div>
-                            </div>
                         </div>
-                        <div class="footer-content">
-                            <div class="footer-links-container">
-                                <div class="footer-about-us-container">
-                                    <div class="footer-link">About Us</div>
-                                    <div class="footer-sub-links">
-                                        <div class="footer-sub-link">Organisation</div>
-                                        <div class="footer-sub-link">Partners</div>
-                                        <div class="footer-sub-link">Clients</div>
-                                    </div>
-                                </div>
-                                <div class="footer-interesting-links-container">
-                                    <div class="footer-link">Interesting Links</div>
-                                    <div class="footer-sub-links">
-                                        <div class="footer-sub-link">Photo Gallery</div>
-                                        <div class="footer-sub-link">Our Team</div>
-                                        <div class="footer-sub-link">Socials</div>
-                                    </div>
-                                </div>
-                                <div class="footer-achievements-container">
-                                    <div class="footer-link">Achievements</div>
-                                    <div class="footer-sub-links">
-                                        <div class="footer-sub-link">Winning Awards</div>
-                                        <div class="footer-sub-link">Press</div>
-                                        <div class="footer-sub-link">Our Amazing Clients</div>
-                                    </div>
-                                </div>
-                                <div class="footer-contact-us-container">
-                                    <div class="footer-link">Contact Us</div>
-                                    <div class="footer-sub-links">
-                                        <div class="footer-sub-link">Bendum dolor eu varius. Morbi fermentum velitsodales</div>
-                                        <div class="footer-sub-link">egetonec. volutpat orci. Sed ipsum felis, tristique</div>
-                                        <div class="footer-sub-link">egestas et, convallis ac velitn consequat nec luctus</div>
-                                    </div>
-                                    <div class="footer-contact-items">
-                                        <div class="footer-contact-item">
-                                            <div class="footer-contact-icon">📞</div>
-                                            <div class="footer-contact-text">Phone: (+63) 236 6322</div>
-                                        </div>
-                                        <div class="footer-contact-item">
-                                            <div class="footer-contact-icon">🕒</div>
-                                            <div class="footer-contact-text-multi">
-                                                <div class="footer-contact-text">Mon - Fri: 10am - 6pm</div>
-                                                <div class="footer-contact-text">Sat - Sun: 10am - 6pm</div>
-                                            </div>
-                                        </div>
-                                        <div class="footer-contact-item">
-                                            <div class="footer-contact-icon">✉️</div>
-                                            <div class="footer-contact-text">public@news.com</div>
-                                        </div>
-                                        <div class="footer-contact-item">
-                                            <div class="footer-contact-icon">📍</div>
-                                            <div class="footer-contact-text-multi">
-                                                <div class="footer-contact-text">639 Jade Valley,</div>
-                                                <div class="footer-contact-text">Washington Dc</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="footer-shipping-section">
-                                <div class="footer-shipping-info">Shipping Information</div>
-                                <div class="footer-shipping-text">
-                                    <div class="footer-shipping-line">Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit amet erat nec nibh</div>
-                                    <div class="footer-shipping-line">rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien,</div>
-                                    <div class="footer-shipping-line">vel finibus erat felis sed neque. Etiam aliquet neque sagittis erat tincidunt aliquam.</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="footer-copyright">© Copyright 2025</div>
                     </div>
+                    <div class="footer-content">
+                        <div class="footer-links-container">
+                            <div class="footer-about-us-container">
+                                <div class="footer-link">About Us</div>
+                                <div class="footer-sub-links">
+                                    <div class="footer-sub-link">Organisation</div>
+                                    <div class="footer-sub-link">Partners</div>
+                                    <div class="footer-sub-link">Clients</div>
+                                </div>
+                            </div>
+                            <div class="footer-interesting-links-container">
+                                <div class="footer-link">Interesting Links</div>
+                                <div class="footer-sub-links">
+                                    <div class="footer-sub-link">Photo Gallery</div>
+                                    <div class="footer-sub-link">Our Team</div>
+                                    <div class="footer-sub-link">Socials</div>
+                                </div>
+                            </div>
+                            <div class="footer-achievements-container">
+                                <div class="footer-link">Achievements</div>
+                                <div class="footer-sub-links">
+                                    <div class="footer-sub-link">Winning Awards</div>
+                                    <div class="footer-sub-link">Press</div>
+                                    <div class="footer-sub-link">Our Amazing Clients</div>
+                                </div>
+                            </div>
+                            <div class="footer-contact-us-container">
+                                <div class="footer-link">Contact Us</div>
+                                <div class="footer-sub-links">
+                                    <div class="footer-sub-link">Bendum dolor eu varius. Morbi fermentum velitsodales</div>
+                                    <div class="footer-sub-link">egetonec. volutpat orci. Sed ipsum felis, tristique</div>
+                                    <div class="footer-sub-link">egestas et, convallis ac velitn consequat nec luctus</div>
+                                </div>
+                                <div class="footer-contact-items">
+                                    <div class="footer-contact-item">
+                                        <div class="footer-contact-icon">📞</div>
+                                        <div class="footer-contact-text">Phone: (+63) 236 6322</div>
+                                    </div>
+                                    <div class="footer-contact-item">
+                                        <div class="footer-contact-icon">🕒</div>
+                                        <div class="footer-contact-text-multi">
+                                            <div class="footer-contact-text">Mon - Fri: 10am - 6pm</div>
+                                            <div class="footer-contact-text">Sat - Sun: 10am - 6pm</div>
+                                        </div>
+                                    </div>
+                                    <div class="footer-contact-item">
+                                        <div class="footer-contact-icon">✉️</div>
+                                        <div class="footer-contact-text">public@news.com</div>
+                                    </div>
+                                    <div class="footer-contact-item">
+                                        <div class="footer-contact-icon">📍</div>
+                                        <div class="footer-contact-text-multi">
+                                            <div class="footer-contact-text">639 Jade Valley,</div>
+                                            <div class="footer-contact-text">Washington Dc</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-shipping-section">
+                            <div class="footer-shipping-info">Shipping Information</div>
+                            <div class="footer-shipping-text">
+                                <div class="footer-shipping-line">Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit amet erat nec nibh</div>
+                                <div class="footer-shipping-line">rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien,</div>
+                                <div class="footer-shipping-line">vel finibus erat felis sed neque. Etiam aliquet neque sagittis erat tincidunt aliquam.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-copyright">© Copyright 2025</div>
                 </div>
             `
         };
@@ -5369,6 +5373,7 @@
                 .offer-small-text {
                     font-family: 'Montserrat', sans-serif;
                     font-weight: 400;
+                    font-style: normal;
                     font-size: 20px;
                     line-height: 100%;
                     letter-spacing: 0%;
@@ -5394,6 +5399,7 @@
                 .offer-title {
                     font-family: 'Montserrat', sans-serif;
                     font-weight: 900;
+                    font-style: normal;
                     font-size: 40px;
                     line-height: 100%;
                     letter-spacing: 0%;
@@ -5406,6 +5412,7 @@
                 .offer-description {
                     font-family: 'Montserrat', sans-serif;
                     font-weight: 400;
+                    font-style: normal;
                     font-size: 17px;
                     line-height: 100%;
                     letter-spacing: 0%;
@@ -5431,6 +5438,7 @@
                     border-radius: 0;
                     font-family: 'Montserrat', sans-serif;
                     font-weight: 700;
+                    font-style: normal;
                     font-size: 18px;
                     line-height: 100%;
                     letter-spacing: 0%;
@@ -5584,7 +5592,7 @@
                     .offer-button {
                         background: rgba(185, 39, 112, 1);
                         color: white;
-                    }
+                        }
                 }
 
                 @media (max-width: 480px) {

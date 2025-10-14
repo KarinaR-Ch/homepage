@@ -5802,11 +5802,49 @@
 
         // Функції для каталогу
         function changePage(pageNumber) {
-            alert('Перехід на сторінку ' + pageNumber);
+            const page1 = document.querySelector('[onclick="changePage(1)"]');
+            const page2 = document.querySelector('[onclick="changePage(2)"]');
+
+            if (page1 && page2) {
+                // Робимо обидві кнопки неактивними
+                page1.classList.remove('page-square');
+                page1.classList.add('page-square-transparent');
+                page2.classList.remove('page-square');
+                page2.classList.add('page-square-transparent');
+
+                // Змінюємо текст на рожевий для обох
+                const number1 = page1.querySelector('.page-number, .page-number-pink');
+                const number2 = page2.querySelector('.page-number, .page-number-pink');
+                if (number1) {
+                    number1.classList.remove('page-number');
+                    number1.classList.add('page-number-pink');
+                }
+                if (number2) {
+                    number2.classList.remove('page-number');
+                    number2.classList.add('page-number-pink');
+                }
+
+                // Робимо активну кнопку
+                const activePage = pageNumber === 1 ? page1 : page2;
+                activePage.classList.remove('page-square-transparent');
+                activePage.classList.add('page-square');
+                const activeNumber = activePage.querySelector('.page-number-pink, .page-number');
+                if (activeNumber) {
+                    activeNumber.classList.remove('page-number-pink');
+                    activeNumber.classList.add('page-number');
+                }
+            }
         }
 
         function nextPage() {
-            alert('Перехід на наступну сторінку');
+            const page1 = document.querySelector('[onclick="changePage(1)"]');
+            const page2 = document.querySelector('[onclick="changePage(2)"]');
+
+            if (page1 && page1.classList.contains('page-square')) {
+                changePage(2);
+            } else if (page2 && page2.classList.contains('page-square')) {
+                // На останній сторінці, тому нічого не робимо
+            }
         }
 
         function focusSidebarSearch() {
@@ -5820,7 +5858,7 @@
             const searchInput = document.querySelector('.sidebar-search-input');
             if (searchInput) {
                 const searchTerm = searchInput.value;
-                alert('Пошук в сайдбарі: ' + searchTerm);
+                // alert('Пошук в сайдбарі: ' + searchTerm);
             }
         }
 

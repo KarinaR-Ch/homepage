@@ -19,6 +19,7 @@
             background: #ffffff;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         /* Навігація */
@@ -3740,6 +3741,533 @@
                 font-size: 12px;
             }
         }
+
+        /* Стилі для сторінки корзини (user) */
+        .full-width-image {
+            width: 100%;
+            height: 229px;
+            object-fit: cover;
+            margin-top: 30px;
+        }
+
+        .table-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 30px auto 0 auto;
+            background-color: rgba(80, 78, 74, 1);
+            height: 59px;
+            display: flex;
+            align-items: center;
+            border-radius: 0;
+            box-sizing: border-box;
+        }
+
+        .table-header {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .table-column {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'SF Pro', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            text-transform: uppercase;
+        }
+
+        .table-rows-container {
+            display: flex;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .images-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .product-names-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .prices-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .quantity-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .totals-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .delete-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .cart-image {
+            width: 120px;
+            height: 120px;
+            margin: 10px 0;
+            object-fit: contain;
+        }
+
+        .product-name {
+            font-family: 'SF Pro', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .price {
+            font-family: 'SF Pro', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .total {
+            font-family: 'SF Pro', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            margin: 10px 0;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(80, 78, 74, 1);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: rgba(60, 58, 54, 1);
+        }
+
+        .quantity-value {
+            font-family: 'SF Pro', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .delete-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid rgb(185, 39, 112);
+            background-color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            margin: 40px 0;
+        }
+
+        .delete-btn:hover {
+            background-color: rgb(185, 39, 112);
+        }
+
+        .delete-icon {
+            width: 20px;
+            height: 20px;
+            filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(300deg) brightness(94%) contrast(97%);
+        }
+
+        .delete-btn:hover .delete-icon {
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+        }
+
+        .row-separator {
+            width: 1300px;
+            border-bottom: 2px solid rgba(185, 39, 112, 1);
+            margin: 0 auto;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px auto;
+            max-width: 1300px;
+        }
+
+        .action-btn {
+            width: 224px;
+            height: 60px;
+            background: rgba(185, 39, 112, 1);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'SF Pro', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: rgba(165, 29, 92, 1);
+        }
+
+        .summary-rectangle {
+            width: 571px;
+            height: 320px;
+            background: rgba(80, 78, 74, 1);
+            margin: 30px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .summary-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .summary-labels {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .summary-values {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .summary-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            margin: 15px 0;
+        }
+
+        .summary-value {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            margin: 15px 0;
+            width: 58px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .checkout-btn {
+            width: 229px;
+            height: 42px;
+            background: rgba(185, 39, 112, 1);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'SF Pro', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .checkout-btn:hover {
+            background: rgba(165, 29, 92, 1);
+        }
+
+        /* ВИПРАВЛЕННЯ ДЛЯ МОБІЛЬНОЇ ВЕРСІЇ СТОРІНКИ MY CART */
+        @media (max-width: 768px) {
+            .table-container {
+                height: auto;
+                padding: 10px 0;
+            }
+
+            .table-header {
+                flex-direction: row;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 0 10px;
+            }
+
+            .table-column {
+                flex: 0 0 auto;
+                min-width: 80px;
+                font-size: 12px;
+                padding: 0 8px;
+            }
+
+            .table-rows-container {
+                flex-direction: column;
+                overflow-x: visible;
+                padding: 0 10px;
+            }
+
+            .images-column,
+            .product-names-column,
+            .prices-column,
+            .quantity-column,
+            .totals-column,
+            .delete-column {
+                flex-direction: row;
+                min-width: 100%;
+                padding: 10px 0;
+                overflow-x: auto;
+                justify-content: space-between;
+            }
+
+            .images-column {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .product-names-column {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .prices-column {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .quantity-column {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .totals-column {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .delete-column {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-image {
+                width: 60px;
+                height: 60px;
+                margin: 5px 0;
+            }
+
+            .product-name,
+            .price,
+            .total {
+                height: auto;
+                font-size: 12px;
+                margin: 5px 0;
+                white-space: nowrap;
+                justify-content: flex-start;
+            }
+
+            .quantity-control {
+                height: auto;
+                margin: 5px 0;
+                justify-content: flex-start;
+            }
+
+            .quantity-btn {
+                width: 25px;
+                height: 25px;
+                font-size: 14px;
+            }
+
+            .quantity-value {
+                font-size: 14px;
+                margin: 0 8px;
+            }
+
+            .delete-btn {
+                width: 30px;
+                height: 30px;
+                margin: 5px 0;
+            }
+
+            .delete-icon {
+                width: 15px;
+                height: 15px;
+            }
+
+            .row-separator {
+                width: 95%;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .action-btn {
+                width: 200px;
+            }
+
+            .summary-rectangle {
+                width: 95%;
+                max-width: 571px;
+                padding: 0 20px;
+            }
+
+            .checkout-btn {
+                width: 200px;
+                bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .table-column {
+                font-size: 10px;
+                min-width: 70px;
+                padding: 0 5px;
+            }
+
+            .cart-image {
+                width: 50px;
+                height: 50px;
+                margin: 3px 0;
+            }
+
+            .product-name,
+            .price,
+            .total {
+                font-size: 10px;
+                margin: 3px 0;
+            }
+
+            .quantity-btn {
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+            }
+
+            .quantity-value {
+                font-size: 12px;
+                margin: 0 5px;
+            }
+
+            .delete-btn {
+                width: 25px;
+                height: 25px;
+                margin: 3px 0;
+            }
+
+            .delete-icon {
+                width: 12px;
+                height: 12px;
+            }
+
+            .row-separator {
+                width: 95%;
+            }
+
+            .action-btn {
+                width: 180px;
+                height: 50px;
+                font-size: 16px;
+            }
+
+            .summary-rectangle {
+                width: 95%;
+                height: 280px;
+                padding: 0 15px;
+            }
+
+            .summary-text {
+                font-size: 16px;
+            }
+
+            .summary-value {
+                font-size: 16px;
+            }
+
+            .checkout-btn {
+                width: 180px;
+                height: 40px;
+                font-size: 16px;
+                bottom: 15px;
+            }
+        }
     </style>
 </head>
 
@@ -3772,7 +4300,7 @@
             </div>
 
             <div class="icons">
-                <a href="#"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/user.png"
+                <a href="#" class="user-icon"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/user.png"
                         alt="User"></a>
                 <a href="#"><img
                         src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/shopping-cart.png"
@@ -5111,6 +5639,212 @@
                     </div>
                     <div class="footer-copyright">© Copyright 2025</div>
                 </div>
+            `,
+            user: `
+                <!-- Додане зображення -->
+                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/hero%20(3).png" alt="Hero Image"
+                    class="full-width-image">
+
+                <!-- Шапка таблиці -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <div class="table-column">Image</div>
+                        <div class="table-column">Product Name</div>
+                        <div class="table-column">Price</div>
+                        <div class="table-column">Quantity</div>
+                        <div class="table-column">Total</div>
+                        <div class="table-column">Delete</div>
+                    </div>
+                </div>
+
+                <!-- Рядки таблиці -->
+                <div class="table-rows-container">
+                    <!-- Колонка з зображеннями -->
+                    <div class="images-column">
+                        <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/mycart1.png"
+                            alt="Cart Item 1" class="cart-image">
+                        <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/mycart2.png"
+                            alt="Cart Item 2" class="cart-image">
+                        <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/mycart3.png"
+                            alt="Cart Item 3" class="cart-image">
+                    </div>
+
+                    <!-- Колонка з назвами товарів -->
+                    <div class="product-names-column">
+                        <div class="product-name">Nomad Haven</div>
+                        <div class="product-name">WanderWay Kid</div>
+                        <div class="product-name">Crossroads Elite</div>
+                    </div>
+
+                    <!-- Колонка з цінами -->
+                    <div class="prices-column">
+                        <div class="price">$250</div>
+                        <div class="price">$690</div>
+                        <div class="price">$1200</div>
+                    </div>
+
+                    <!-- Колонка з кількістю -->
+                    <div class="quantity-column">
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity-value">1</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity-value">1</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <div class="quantity-control">
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity-value">1</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Колонка з загальною вартістю -->
+                    <div class="totals-column">
+                        <div class="total">$250</div>
+                        <div class="total">$690</div>
+                        <div class="total">$1200</div>
+                    </div>
+
+                    <!-- Колонка з кнопками видалення -->
+                    <div class="delete-column">
+                        <button class="delete-btn">
+                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/delete.png"
+                                alt="Delete" class="delete-icon">
+                        </button>
+                        <button class="delete-btn">
+                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/delete.png"
+                                alt="Delete" class="delete-icon">
+                        </button>
+                        <button class="delete-btn">
+                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/delete.png"
+                                alt="Delete" class="delete-icon">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Роздільники між рядками -->
+                <div class="row-separator"></div>
+                <div class="row-separator"></div>
+                <div class="row-separator"></div>
+
+                <!-- Кнопки -->
+                <div class="buttons-container">
+                    <button class="action-btn">CONTINUE SHOPPING</button>
+                    <button class="action-btn">CLEAR SHOPPING CART</button>
+                </div>
+
+                <!-- Прямокутник -->
+                <div class="summary-rectangle">
+                    <div class="summary-content">
+                        <div class="summary-labels">
+                            <div class="summary-text">Sub Total</div>
+                            <div class="summary-text">Shipping</div>
+                            <div class="summary-text">Total</div>
+                        </div>
+                        <div class="summary-values">
+                            <div class="summary-value">$2140</div>
+                            <div class="summary-value">$30</div>
+                            <div class="summary-value">$2170</div>
+                        </div>
+                    </div>
+                    <button class="checkout-btn">CHECKOUT</button>
+                </div>
+
+                <!-- Футер -->
+                <div class="footer-section">
+                    <div class="footer-header">
+                        <div class="footer-title">Our Benefits</div>
+                        <div class="footer-vertical-lines">
+                            <div class="footer-line"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png" alt="Line"></div>
+                            <div class="footer-line"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png" alt="Line"></div>
+                            <div class="footer-line"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png" alt="Line"></div>
+                            <div class="footer-line"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png" alt="Line"></div>
+                            <div class="footer-line"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png" alt="Line"></div>
+                            <div class="footer-line"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png" alt="Line"></div>
+                            <div class="footer-line"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png" alt="Line"></div>
+                            <div class="footer-line"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Path%2022.png" alt="Line"></div>
+                        </div>
+                        <div class="footer-horizontal-images">
+                            <div class="footer-horizontal-img"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer1.png" alt="Footer 1"></div>
+                            <div class="footer-horizontal-img"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer2.png" alt="Footer 2"></div>
+                            <div class="footer-horizontal-img"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer3.png" alt="Footer 3"></div>
+                            <div class="footer-horizontal-img"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/footer4.png" alt="Footer 4"></div>
+                        </div>
+                    </div>
+                    <div class="footer-content">
+                        <div class="footer-links-container">
+                            <div class="footer-about-us-container">
+                                <div class="footer-link">About Us</div>
+                                <div class="footer-sub-links">
+                                    <div class="footer-sub-link">Organisation</div>
+                                    <div class="footer-sub-link">Partners</div>
+                                    <div class="footer-sub-link">Clients</div>
+                                </div>
+                            </div>
+                            <div class="footer-interesting-links-container">
+                                <div class="footer-link">Interesting Links</div>
+                                <div class="footer-sub-links">
+                                    <div class="footer-sub-link">Photo Gallery</div>
+                                    <div class="footer-sub-link">Our Team</div>
+                                    <div class="footer-sub-link">Socials</div>
+                                </div>
+                            </div>
+                            <div class="footer-achievements-container">
+                                <div class="footer-link">Achievements</div>
+                                <div class="footer-sub-links">
+                                    <div class="footer-sub-link">Winning Awards</div>
+                                    <div class="footer-sub-link">Press</div>
+                                    <div class="footer-sub-link">Our Amazing Clients</div>
+                                </div>
+                            </div>
+                            <div class="footer-contact-us-container">
+                                <div class="footer-link">Contact Us</div>
+                                <div class="footer-sub-links">
+                                    <div class="footer-sub-link">Bendum dolor eu varius. Morbi fermentum velitsodales</div>
+                                    <div class="footer-sub-link">egetonec. volutpat orci. Sed ipsum felis, tristique</div>
+                                    <div class="footer-sub-link">egestas et, convallis ac velitn consequat nec luctus</div>
+                                </div>
+                                <div class="footer-contact-items">
+                                    <div class="footer-contact-item">
+                                        <div class="footer-contact-icon">📞</div>
+                                        <div class="footer-contact-text">Phone: (+63) 236 6322</div>
+                                    </div>
+                                    <div class="footer-contact-item">
+                                        <div class="footer-contact-icon">🕒</div>
+                                        <div class="footer-contact-text-multi">
+                                            <div class="footer-contact-text">Mon - Fri: 10am - 6pm</div>
+                                            <div class="footer-contact-text">Sat - Sun: 10am - 6pm</div>
+                                        </div>
+                                    </div>
+                                    <div class="footer-contact-item">
+                                        <div class="footer-contact-icon">✉️</div>
+                                        <div class="footer-contact-text">public@news.com</div>
+                                    </div>
+                                    <div class="footer-contact-item">
+                                        <div class="footer-contact-icon">📍</div>
+                                        <div class="footer-contact-text-multi">
+                                            <div class="footer-contact-text">639 Jade Valley,</div>
+                                            <div class="footer-contact-text">Washington Dc</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-shipping-section">
+                            <div class="footer-shipping-info">Shipping Information</div>
+                            <div class="footer-shipping-text">
+                                <div class="footer-shipping-line">Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit amet erat nec nibh</div>
+                                <div class="footer-shipping-line">rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien,</div>
+                                <div class="footer-shipping-line">vel finibus erat felis sed neque. Etiam aliquet neque sagittis erat tincidunt aliquam.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-copyright">© Copyright 2025</div>
+                </div>
             `
         };
 
@@ -5779,6 +6513,11 @@
                     setupAddToCart();
                 }
 
+                // Додаємо обробники для сторінки корзини
+                if (page === 'user') {
+                    setupCartPage();
+                }
+
                 // Прокручуємо на початок сторінки
                 window.scrollTo(0, 0);
             }, 300);
@@ -5795,6 +6534,12 @@
             });
         });
 
+        // Додаємо обробник для іконки користувача
+        document.querySelector('.user-icon').addEventListener('click', (e) => {
+            e.preventDefault();
+            loadPage('user');
+        });
+
         // Завантажуємо домашню сторінку при завантаженні
         document.addEventListener('DOMContentLoaded', () => {
             loadPage('home');
@@ -5802,49 +6547,11 @@
 
         // Функції для каталогу
         function changePage(pageNumber) {
-            const page1 = document.querySelector('[onclick="changePage(1)"]');
-            const page2 = document.querySelector('[onclick="changePage(2)"]');
-
-            if (page1 && page2) {
-                // Робимо обидві кнопки неактивними
-                page1.classList.remove('page-square');
-                page1.classList.add('page-square-transparent');
-                page2.classList.remove('page-square');
-                page2.classList.add('page-square-transparent');
-
-                // Змінюємо текст на рожевий для обох
-                const number1 = page1.querySelector('.page-number, .page-number-pink');
-                const number2 = page2.querySelector('.page-number, .page-number-pink');
-                if (number1) {
-                    number1.classList.remove('page-number');
-                    number1.classList.add('page-number-pink');
-                }
-                if (number2) {
-                    number2.classList.remove('page-number');
-                    number2.classList.add('page-number-pink');
-                }
-
-                // Робимо активну кнопку
-                const activePage = pageNumber === 1 ? page1 : page2;
-                activePage.classList.remove('page-square-transparent');
-                activePage.classList.add('page-square');
-                const activeNumber = activePage.querySelector('.page-number-pink, .page-number');
-                if (activeNumber) {
-                    activeNumber.classList.remove('page-number-pink');
-                    activeNumber.classList.add('page-number');
-                }
-            }
+            alert('Перехід на сторінку ' + pageNumber);
         }
 
         function nextPage() {
-            const page1 = document.querySelector('[onclick="changePage(1)"]');
-            const page2 = document.querySelector('[onclick="changePage(2)"]');
-
-            if (page1 && page1.classList.contains('page-square')) {
-                changePage(2);
-            } else if (page2 && page2.classList.contains('page-square')) {
-                // На останній сторінці, тому нічого не робимо
-            }
+            alert('Перехід на наступну сторінку');
         }
 
         function focusSidebarSearch() {
@@ -5858,7 +6565,7 @@
             const searchInput = document.querySelector('.sidebar-search-input');
             if (searchInput) {
                 const searchTerm = searchInput.value;
-                // alert('Пошук в сайдбарі: ' + searchTerm);
+                alert('Пошук в сайдбарі: ' + searchTerm);
             }
         }
 
@@ -5958,6 +6665,46 @@
             });
         }
 
+        // Функція для налаштування сторінки корзини
+        function setupCartPage() {
+            // Додаємо функціонал для кнопок кількості
+            document.querySelectorAll('.quantity-control').forEach(control => {
+                const minusBtn = control.querySelector('.minus');
+                const plusBtn = control.querySelector('.plus');
+                const valueElement = control.querySelector('.quantity-value');
+
+                minusBtn.addEventListener('click', () => {
+                    let value = parseInt(valueElement.textContent);
+                    if (value > 1) {
+                        value--;
+                        valueElement.textContent = value;
+                    }
+                });
+
+                plusBtn.addEventListener('click', () => {
+                    let value = parseInt(valueElement.textContent);
+                    value++;
+                    valueElement.textContent = value;
+                });
+            });
+
+            // Додаємо функціонал для кнопок видалення
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const row = this.closest('.table-rows-container');
+                    const index = Array.from(this.parentNode.children).indexOf(this);
+
+                    // Видаляємо відповідні елементи з усіх колонок
+                    const columns = row.querySelectorAll('div[class$="-column"]');
+                    columns.forEach(column => {
+                        if (column.children.length > index) {
+                            column.removeChild(column.children[index]);
+                        }
+                    });
+                });
+            });
+        }
+
         // Функції для модального вікна відгуків
         function openReviewsModal() {
             document.getElementById('reviews-modal').style.display = 'flex';
@@ -5991,5 +6738,4 @@
         });
     </script>
 </body>
-
-</html>
+</html> 

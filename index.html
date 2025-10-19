@@ -123,6 +123,7 @@
             margin-right: 0;
             flex: 1;
             justify-content: flex-end;
+            position: relative;
         }
 
         .icons img {
@@ -134,6 +135,22 @@
 
         .icons img:hover {
             transform: scale(1.1);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: rgba(185, 39, 112, 1);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
 
         .nav-line {
@@ -4268,6 +4285,156 @@
                 bottom: 15px;
             }
         }
+
+        /* Стилі для модального вікна корзини */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-cart {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .cart-rectangle {
+            width: 100%;
+            height: auto;
+            background-color: rgba(80, 78, 74, 1);
+            opacity: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .cart-price-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-price-table td {
+            padding: 5px 0;
+        }
+
+        .cart-label-column {
+            text-align: left;
+        }
+
+        .cart-value-column {
+            text-align: right;
+        }
+
+        .cart-text-item {
+            font-family: Montserrat;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 17px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+            opacity: 1;
+        }
+
+        .cart-sub-total {
+            width: 83px;
+            height: 21px;
+        }
+
+        .cart-discount {
+            width: 81px;
+            height: 21px;
+        }
+
+        .cart-shipping {
+            width: 81px;
+            height: 21px;
+        }
+
+        .cart-total {
+            width: 52px;
+            height: 24px;
+        }
+
+        .cart-checkout-button {
+            width: 229px;
+            height: 42px;
+            background: rgba(185, 39, 112, 1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .cart-checkout-text {
+            font-family: Montserrat;
+            font-weight: 700;
+            font-style: Bold;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            color: white;
+        }
+
+        .cart-separator-line {
+            width: 100%;
+            height: 0px;
+            border-bottom: 2px solid rgba(185, 39, 112, 0.6);
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .cart-rectangle {
+                padding: 15px;
+            }
+
+            .cart-text-item {
+                font-size: 15px;
+            }
+
+            .cart-checkout-button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cart-rectangle {
+                padding: 10px;
+            }
+
+            .cart-text-item {
+                font-size: 14px;
+            }
+
+            .cart-checkout-text {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 
@@ -4302,9 +4469,11 @@
             <div class="icons">
                 <a href="#" class="user-icon"><img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/user.png"
                         alt="User"></a>
-                <a href="#"><img
-                        src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/shopping-cart.png"
-                        alt="Cart"></a>
+                <a href="#" class="cart-icon">
+                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/shopping-cart.png"
+                        alt="Cart">
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
             </div>
         </header>
 
@@ -4404,7 +4573,66 @@
         </div>
     </div>
 
+    <!-- Модальне вікно для корзини -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <span class="close-cart" onclick="closeCartModal()">×</span>
+            <!-- Вміст корзини -->
+            <div class="cart-rectangle">
+                <table class="cart-price-table">
+                    <tr>
+                        <td class="cart-label-column">
+                            <div class="cart-text-item cart-sub-total">Sub Total</div>
+                        </td>
+                        <td class="cart-value-column">
+                            <div class="cart-text-item" id="cart-subtotal">$0</div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="cart-separator-line"></div>
+                <table class="cart-price-table">
+                    <tr>
+                        <td class="cart-label-column">
+                            <div class="cart-text-item cart-discount">Discount</div>
+                        </td>
+                        <td class="cart-value-column">
+                            <div class="cart-text-item">$0</div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="cart-separator-line"></div>
+                <table class="cart-price-table">
+                    <tr>
+                        <td class="cart-label-column">
+                            <div class="cart-text-item cart-shipping">Shipping</div>
+                        </td>
+                        <td class="cart-value-column">
+                            <div class="cart-text-item">$0</div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="cart-separator-line"></div>
+                <table class="cart-price-table">
+                    <tr>
+                        <td class="cart-label-column">
+                            <div class="cart-text-item cart-total">Total</div>
+                        </td>
+                        <td class="cart-value-column">
+                            <div class="cart-text-item" id="cart-total">$0</div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="cart-checkout-button">
+                    <div class="cart-checkout-text">CHECKOUT</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Глобальна змінна для кошика
+        let cart = [];
+
         // Вміст сторінок
         const pages = {
             home: `
@@ -4463,10 +4691,10 @@
                         <h1 class="suitcases-title">Travel suitcases</h1>
                         <p class="suitcases-subtitle">Duis vestibulum elit vel neque pharetra</p>
                         <div class="suitcases-images">
-                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%201.png" alt="Suitcase 1" class="suitcase-image" data-page="product">
-                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%202.png" alt="Suitcase 2" class="suitcase-image" data-page="product">
-                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%203.png" alt="Suitcase 3" class="suitcase-image" data-page="product">
-                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%204.png" alt="Suitcase 4" class="suitcase-image" data-page="product">
+                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%201.png" alt="Suitcase 1" class="suitcase-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%201.png">
+                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%202.png" alt="Suitcase 2" class="suitcase-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%202.png">
+                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%203.png" alt="Suitcase 3" class="suitcase-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%203.png">
+                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%204.png" alt="Suitcase 4" class="suitcase-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/card%204.png">
                         </div>
                     </div>
                 </div>
@@ -4476,32 +4704,32 @@
                         <div class="selected-subheading">Duis vestibulum elit vel neque pharetra</div>
                         <div class="products-container">
                             <div class="product-item">
-                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo.png" alt="Product 1" class="product-image" data-page="product">
+                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo.png" alt="Product 1" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo.png">
                                 <div class="sale-label">SALE</div>
                                 <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
                                 <div class="product-price">$250</div>
-                                <button class="add-to-cart-btn">Add to Cart</button>
+                                <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo.png"}'>Add to Cart</button>
                             </div>
                             <div class="product-item">
-                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(1).png" alt="Product 2" class="product-image" data-page="product">
+                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(1).png" alt="Product 2" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(1).png">
                                 <div class="sale-label">SALE</div>
                                 <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
                                 <div class="product-price">$200</div>
-                                <button class="add-to-cart-btn">Add to Cart</button>
+                                <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(1).png"}'>Add to Cart</button>
                             </div>
                             <div class="product-item">
-                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(2).png" alt="Product 3" class="product-image" data-page="product">
+                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(2).png" alt="Product 3" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(2).png">
                                 <div class="sale-label">SALE</div>
                                 <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
                                 <div class="product-price">$300</div>
-                                <button class="add-to-cart-btn">Add to Cart</button>
+                                <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 300, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(2).png"}'>Add to Cart</button>
                             </div>
                             <div class="product-item">
-                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(3).png" alt="Product 4" class="product-image" data-page="product">
+                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(3).png" alt="Product 4" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(3).png">
                                 <div class="sale-label">SALE</div>
                                 <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
                                 <div class="product-price">$350</div>
-                                <button class="add-to-cart-btn">Add to Cart</button>
+                                <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 350, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(3).png"}'>Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -4531,7 +4759,7 @@
                         <p class="new-products-subtext">Duis vestibulum elit vel neque pharetra</p>
                         <div class="new-products-images">
                             <div class="new-product-wrapper">
-                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product1.png" alt="Product 1" class="new-product-image product-image" data-page="product">
+                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product1.png" alt="Product 1" class="new-product-image product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product1.png">
                                 <div class="new-product-text">
                                     <div>Vel vestibulum elit</div>
                                     <div>tuvel euqen.</div>
@@ -4540,7 +4768,7 @@
                                 <button class="new-view-button">View Product</button>
                             </div>
                             <div class="new-product-wrapper">
-                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product2.png" alt="Product 2" class="new-product-image product-image" data-page="product">
+                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product2.png" alt="Product 2" class="new-product-image product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product2.png">
                                 <div class="new-sale-badge">SALE</div>
                                 <div class="new-product-text">
                                     <div>Vel vestibulum elit</div>
@@ -4550,7 +4778,7 @@
                                 <button class="new-view-button">View Product</button>
                             </div>
                             <div class="new-product-wrapper">
-                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product3.png" alt="Product 3" class="new-product-image product-image" data-page="product">
+                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product3.png" alt="Product 3" class="new-product-image product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product3.png">
                                 <div class="new-product-text">
                                     <div>Vel vestibulum elit</div>
                                     <div>tuvel euqen.</div>
@@ -4559,7 +4787,7 @@
                                 <button class="new-view-button">View Product</button>
                             </div>
                             <div class="new-product-wrapper">
-                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product4.png" alt="Product 4" class="new-product-image product-image" data-page="product">
+                                <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product4.png" alt="Product 4" class="new-product-image product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product4.png">
                                 <div class="new-sale-badge">SALE</div>
                                 <div class="new-product-text">
                                     <div>Vel vestibulum elit</div>
@@ -4714,116 +4942,116 @@
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog1.png" alt="Валіза 1" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog1.png" alt="Валіза 1" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog1.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog1.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog2.png" alt="Валіза 2" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog2.png" alt="Валіза 2" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog2.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog2.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png" alt="Валіза 3" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png" alt="Валіза 3" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
-                                    </div>
-                                </div>
-                                <div class="image-row">
-                                    <div class="image-container">
-                                        <div class="image-wrapper">
-                                            <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog4.png" alt="Валіза 4" class="product-image" data-page="product">
-                                        </div>
-                                        <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
-                                    </div>
-                                    <div class="image-container">
-                                        <div class="image-wrapper">
-                                            <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog5.png" alt="Валіза 5" class="product-image" data-page="product">
-                                        </div>
-                                        <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
-                                    </div>
-                                    <div class="image-container">
-                                        <div class="image-wrapper">
-                                            <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog6.png" alt="Валіза 6" class="product-image" data-page="product">
-                                        </div>
-                                        <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
                                 <div class="image-row">
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog7.png" alt="Валіза 7" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog4.png" alt="Валіза 4" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog4.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog4.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog8.png" alt="Валіза 8" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog5.png" alt="Валіза 5" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog5.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog5.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog9.png" alt="Валіза 9" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog6.png" alt="Валіза 6" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog6.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog6.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
                                 <div class="image-row">
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog10.png" alt="Валіза 10" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog7.png" alt="Валіза 7" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog7.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog7.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog11.png" alt="Валіза 11" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog8.png" alt="Валіза 8" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog8.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog8.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
                                         <div class="image-wrapper">
                                             <div class="sale-badge">SALE</div>
-                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog12.png" alt="Валіза 12" class="product-image" data-page="product">
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog9.png" alt="Валіза 9" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog9.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
                                         <div class="price">$250</div>
-                                        <button class="add-to-cart-btn">Add To Cart</button>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog9.png"}'>Add To Cart</button>
+                                    </div>
+                                </div>
+                                <div class="image-row">
+                                    <div class="image-container">
+                                        <div class="image-wrapper">
+                                            <div class="sale-badge">SALE</div>
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog10.png" alt="Валіза 10" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog10.png">
+                                        </div>
+                                        <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
+                                        <div class="price">$250</div>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog10.png"}'>Add To Cart</button>
+                                    </div>
+                                    <div class="image-container">
+                                        <div class="image-wrapper">
+                                            <div class="sale-badge">SALE</div>
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog11.png" alt="Валіза 11" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog11.png">
+                                        </div>
+                                        <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
+                                        <div class="price">$250</div>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog11.png"}'>Add To Cart</button>
+                                    </div>
+                                    <div class="image-container">
+                                        <div class="image-wrapper">
+                                            <div class="sale-badge">SALE</div>
+                                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog12.png" alt="Валіза 12" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog12.png">
+                                        </div>
+                                        <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
+                                        <div class="price">$250</div>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog12.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
                                 <div class="pagination">
@@ -4845,43 +5073,48 @@
                             <div class="sidebar-title">Top Best Sets</div>
                             <div class="top-images-column">
                                 <div class="top-image-item">
-                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog1.png" alt="Top Валіза 1" class="product-image" data-page="product">
+                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog1.png" alt="Top Валіза 1" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog1.png">
                                     <div>
                                         <div class="top-image-text">Primis in faucibus aenean<br>laoreet rhoncus ipsum eget.</div>
                                         <div class="stars">★★★★★</div>
                                         <div class="top-price">$1200</div>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Primis in faucibus aenean laoreet rhoncus ipsum eget", "price": 1200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog1.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
                                 <div class="top-image-item">
-                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog2.png" alt="Top Валіза 2" class="product-image" data-page="product">
+                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog2.png" alt="Top Валіза 2" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog2.png">
                                     <div>
                                         <div class="top-image-text">Primis in faucibus aenean<br>laoreet rhoncus ipsum eget.</div>
                                         <div class="stars">★★★★★</div>
                                         <div class="top-price">$1200</div>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Primis in faucibus aenean laoreet rhoncus ipsum eget", "price": 1200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog2.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
                                 <div class="top-image-item">
-                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog3.png" alt="Top Валіза 3" class="product-image" data-page="product">
+                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog3.png" alt="Top Валіза 3" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog3.png">
                                     <div>
                                         <div class="top-image-text">Primis in faucibus aenean<br>laoreet rhoncus ipsum eget.</div>
                                         <div class="stars">★★★★★</div>
                                         <div class="top-price">$1200</div>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Primis in faucibus aenean laoreet rhoncus ipsum eget", "price": 1200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog3.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
                                 <div class="top-image-item">
-                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog4.png" alt="Top Валіза 4" class="product-image" data-page="product">
+                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog4.png" alt="Top Валіза 4" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog4.png">
                                     <div>
                                         <div class="top-image-text">Primis in faucibus aenean<br>laoreet rhoncus ipsum eget.</div>
                                         <div class="stars">★★★★★</div>
                                         <div class="top-price">$1200</div>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Primis in faucibus aenean laoreet rhoncus ipsum eget", "price": 1200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog4.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
                                 <div class="top-image-item">
-                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog5.png" alt="Top Валіза 5" class="product-image" data-page="product">
+                                    <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog5.png" alt="Top Валіза 5" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog5.png">
                                     <div>
                                         <div class="top-image-text">Primis in faucibus aenean<br>laoreet rhoncus ipsum eget.</div>
                                         <div class="stars">★★★★★</div>
                                         <div class="top-price">$1200</div>
+                                        <button class="add-to-cart-btn" data-product='{"name": "Primis in faucibus aenean laoreet rhoncus ipsum eget", "price": 1200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/topcatalog5.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -5025,16 +5258,6 @@
                     <div class="section-container">
                         <div class="left-side">
                             <div class="new-arrivals-title">New Arrivals Every Week</div>
-                            <div class="description-text">
-                                <span class="text-line">Duis vestibulum elit vel neque pharetra vulputate. Quisque scelerisque nisi</span>
-                                <span class="text-line">urna. Duis rutrum non risus in imperdiet. Proin molestie accumsan nulla sit.</span>
-                                <span class="text-line">Quisque scelerisque nisi urnauis rutrum.</span>
-                            </div>
-                            <div class="description-text">
-                                <span class="text-line">Vitrumuis vestibulum elit vel neque pharetra vulputate. Quisque scelerisque</span>
-                                <span class="text-line">nisi urna. Duis vestibulum elit vel neque pharetra vulputateuisque</span>
-                                <span class="text-line">scelerisque nisi urna.</span>
-                            </div>
                             <button class="see-all-button">See All Models</button>
                         </div>
                         <div class="right-side">
@@ -5341,7 +5564,7 @@
                     <!-- Нова секція з двома колонками -->
                     <div class="product-content-section">
                         <div class="product-image-section">
-                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/global1.png"
+                            <img id="main-product-image" src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/global1.png"
                                 alt="Global Image">
 
                             <!-- Мініатюри -->
@@ -5375,7 +5598,7 @@
                                 <span class="product-star yellow">★</span>
                                 <span class="product-star yellow">★</span>
                                 <span class="product-star gray">★</span>
-                            </div>
+                        </div>
 
                             <!-- Ціна -->
                             <div class="product-price">$250</div>
@@ -5425,7 +5648,7 @@
                                     <span class="product-quantity-number">1</span>
                                     <button class="product-quantity-button">+</button>
                                 </div>
-                                <div class="product-add-to-cart">
+                                <div class="product-add-to-cart" data-product='{"name": "Global Explorer Max Comfort Suitcase Pro", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/global1.png"}'>
                                     <span class="product-add-to-cart-text">Add To Cart</span>
                                 </div>
                             </div>
@@ -5493,7 +5716,7 @@
                         <div class="product-recommendation-images">
                             <div class="product-recommendation-item">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like1.png"
-                                    alt="Product 1" class="product-image" data-page="product">
+                                    alt="Product 1" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like1.png">
                                 <div class="product-sale-badge">
                                     <span class="product-sale-text">SALE</span>
                                 </div>
@@ -5501,26 +5724,26 @@
                                     <p class="product-line">Vel vestibulum elit</p>
                                     <p class="product-line">tuvel euqen.</p>
                                     <p class="product-recommendation-price">$200</p>
-                                    <div class="product-recommendation-add-to-cart">
+                                    <div class="product-recommendation-add-to-cart" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like1.png"}'>
                                         <span class="product-recommendation-add-to-cart-text">Add To Cart</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="product-recommendation-item">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png"
-                                    alt="Product 2" class="product-image" data-page="product">
+                                    alt="Product 2" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png">
                                 <div class="product-details">
                                     <p class="product-line">Vel vestibulum elit</p>
                                     <p class="product-line">tuvel euqen.</p>
                                     <p class="product-recommendation-price">$200</p>
-                                    <div class="product-recommendation-add-to-cart">
+                                    <div class="product-recommendation-add-to-cart" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png"}'>
                                         <span class="product-recommendation-add-to-cart-text">Add To Cart</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="product-recommendation-item">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like3.png"
-                                    alt="Product 3" class="product-image" data-page="product">
+                                    alt="Product 3" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like3.png">
                                 <div class="product-sale-badge">
                                     <span class="product-sale-text">SALE</span>
                                 </div>
@@ -5528,19 +5751,19 @@
                                     <p class="product-line">Vel vestibulum elit</p>
                                     <p class="product-line">tuvel euqen.</p>
                                     <p class="product-recommendation-price">$200</p>
-                                    <div class="product-recommendation-add-to-cart">
+                                    <div class="product-recommendation-add-to-cart" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like3.png"}'>
                                         <span class="product-recommendation-add-to-cart-text">Add To Cart</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="product-recommendation-item">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like4.png"
-                                    alt="Product 4" class="product-image" data-page="product">
+                                    alt="Product 4" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like4.png">
                                 <div class="product-details">
                                     <p class="product-line">Vel vestibulum elit</p>
                                     <p class="product-line">tuvel euqen.</p>
                                     <p class="product-recommendation-price">$200</p>
-                                    <div class="product-recommendation-add-to-cart">
+                                    <div class="product-recommendation-add-to-cart" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like4.png"}'>
                                         <span class="product-recommendation-add-to-cart-text">Add To Cart</span>
                                     </div>
                                 </div>
@@ -5658,72 +5881,8 @@
                 </div>
 
                 <!-- Рядки таблиці -->
-                <div class="table-rows-container">
-                    <!-- Колонка з зображеннями -->
-                    <div class="images-column">
-                        <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/mycart1.png"
-                            alt="Cart Item 1" class="cart-image">
-                        <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/mycart2.png"
-                            alt="Cart Item 2" class="cart-image">
-                        <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/mycart3.png"
-                            alt="Cart Item 3" class="cart-image">
-                    </div>
-
-                    <!-- Колонка з назвами товарів -->
-                    <div class="product-names-column">
-                        <div class="product-name">Nomad Haven</div>
-                        <div class="product-name">WanderWay Kid</div>
-                        <div class="product-name">Crossroads Elite</div>
-                    </div>
-
-                    <!-- Колонка з цінами -->
-                    <div class="prices-column">
-                        <div class="price">$250</div>
-                        <div class="price">$690</div>
-                        <div class="price">$1200</div>
-                    </div>
-
-                    <!-- Колонка з кількістю -->
-                    <div class="quantity-column">
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus">-</button>
-                            <span class="quantity-value">1</span>
-                            <button class="quantity-btn plus">+</button>
-                        </div>
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus">-</button>
-                            <span class="quantity-value">1</span>
-                            <button class="quantity-btn plus">+</button>
-                        </div>
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus">-</button>
-                            <span class="quantity-value">1</span>
-                            <button class="quantity-btn plus">+</button>
-                        </div>
-                    </div>
-
-                    <!-- Колонка з загальною вартістю -->
-                    <div class="totals-column">
-                        <div class="total">$250</div>
-                        <div class="total">$690</div>
-                        <div class="total">$1200</div>
-                    </div>
-
-                    <!-- Колонка з кнопками видалення -->
-                    <div class="delete-column">
-                        <button class="delete-btn">
-                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/delete.png"
-                                alt="Delete" class="delete-icon">
-                        </button>
-                        <button class="delete-btn">
-                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/delete.png"
-                                alt="Delete" class="delete-icon">
-                        </button>
-                        <button class="delete-btn">
-                            <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/delete.png"
-                                alt="Delete" class="delete-icon">
-                        </button>
-                    </div>
+                <div class="table-rows-container" id="cart-items-container">
+                    <!-- Тут будуть динамічно додані товари з кошика -->
                 </div>
 
                 <!-- Роздільники між рядками -->
@@ -5733,8 +5892,8 @@
 
                 <!-- Кнопки -->
                 <div class="buttons-container">
-                    <button class="action-btn">CONTINUE SHOPPING</button>
-                    <button class="action-btn">CLEAR SHOPPING CART</button>
+                    <button class="action-btn" onclick="loadPage('catalog')">CONTINUE SHOPPING</button>
+                    <button class="action-btn" onclick="clearCart()">CLEAR SHOPPING CART</button>
                 </div>
 
                 <!-- Прямокутник -->
@@ -5746,9 +5905,9 @@
                             <div class="summary-text">Total</div>
                         </div>
                         <div class="summary-values">
-                            <div class="summary-value">$2140</div>
+                            <div class="summary-value" id="cart-subtotal-summary">$0</div>
                             <div class="summary-value">$30</div>
-                            <div class="summary-value">$2170</div>
+                            <div class="summary-value" id="cart-total-summary">$0</div>
                         </div>
                     </div>
                     <button class="checkout-btn">CHECKOUT</button>
@@ -5940,23 +6099,6 @@
                     letter-spacing: 0%;
                     color: #000;
                     margin-bottom: 30px;
-                    white-space: nowrap;
-                }
-
-                .description-text {
-                    font-family: 'Montserrat', sans-serif;
-                    font-weight: 400;
-                    font-style: normal;
-                    font-size: 17px;
-                    line-height: 100%;
-                    letter-spacing: 0%;
-                    color: rgba(80, 78, 74, 1);
-                    margin-bottom: 20px;
-                }
-
-                .text-line {
-                    display: block;
-                    margin-bottom: 5px;
                     white-space: nowrap;
                 }
 
@@ -6225,11 +6367,6 @@
                         margin-bottom: 20px;
                     }
 
-                    .description-text {
-                        font-size: 15px;
-                        text-align: center;
-                    }
-
                     .see-all-button {
                         align-self: center;
                         margin-top: 15px;
@@ -6364,11 +6501,6 @@
                         font-size: 28px;
                         text-align: center;
                         margin-bottom: 15px;
-                    }
-
-                    .description-text {
-                        font-size: 13px;
-                        text-align: center;
                     }
 
                     .see-all-button {
@@ -6509,6 +6641,7 @@
 
                 // Додаємо обробники для вкладок на сторінці продукту
                 if (page === 'product') {
+                    setupProductPage();
                     setupProductTabs();
                     setupAddToCart();
                 }
@@ -6516,11 +6649,279 @@
                 // Додаємо обробники для сторінки корзини
                 if (page === 'user') {
                     setupCartPage();
+                    updateCartSummary();
                 }
+
+                // Додаємо обробники подій для кнопок Add to Cart
+                setupAddToCartButtons();
 
                 // Прокручуємо на початок сторінки
                 window.scrollTo(0, 0);
             }, 300);
+        }
+
+        // Функція для налаштування сторінки продукту
+        function setupProductPage() {
+            const mainImage = document.getElementById('main-product-image');
+            if (mainImage) {
+                // Перевіряємо, чи є збережене зображення в sessionStorage
+                const clickedImageUrl = sessionStorage.getItem('clickedProductImage');
+                if (clickedImageUrl) {
+                    mainImage.src = clickedImageUrl;
+                    sessionStorage.removeItem('clickedProductImage');
+                }
+
+                // Додаємо обробники для мініатюр
+                document.querySelectorAll('.product-thumbnail img').forEach(thumb => {
+                    thumb.addEventListener('click', function() {
+                        mainImage.src = this.src;
+                    });
+                });
+            }
+        }
+
+        // Функція для додавання обробників подій для кнопок Add to Cart
+        function setupAddToCartButtons() {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn, .product-add-to-cart, .product-recommendation-add-to-cart');
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const productData = this.getAttribute('data-product');
+                    if (productData) {
+                        const product = JSON.parse(productData);
+                        addToCart(product);
+                    }
+                });
+            });
+        }
+
+        // Функція для додавання товару до кошика
+        function addToCart(product) {
+            // Перевіряємо, чи товар вже є в кошику
+            const existingProduct = cart.find(item => item.name === product.name && item.price === product.price);
+            
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            // Оновлюємо відображення кошика
+            updateCartDisplay();
+            
+            // Показуємо сповіщення
+            showAddToCartNotification(product.name);
+        }
+
+        // Функція для оновлення відображення кошика
+        function updateCartDisplay() {
+            const cartBadge = document.getElementById('cart-badge');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            if (cartBadge) {
+                cartBadge.textContent = totalItems;
+                cartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+            }
+            
+            // Оновлюємо модальне вікно кошика
+            updateCartModal();
+            
+            // Оновлюємо сторінку корзини, якщо вона активна
+            if (document.querySelector('.table-rows-container')) {
+                updateCartPage();
+                updateCartSummary();
+            }
+        }
+
+        // Функція для оновлення модального вікна кошика
+        function updateCartModal() {
+            const subtotalElement = document.getElementById('cart-subtotal');
+            const totalElement = document.getElementById('cart-total');
+            
+            if (subtotalElement && totalElement) {
+                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                subtotalElement.textContent = `$${subtotal}`;
+                totalElement.textContent = `$${subtotal}`;
+            }
+        }
+
+        // Функція для оновлення сторінки корзини
+        function updateCartPage() {
+            const container = document.getElementById('cart-items-container');
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            // Створюємо колонки
+            const imagesColumn = document.createElement('div');
+            imagesColumn.className = 'images-column';
+            
+            const productNamesColumn = document.createElement('div');
+            productNamesColumn.className = 'product-names-column';
+            
+            const pricesColumn = document.createElement('div');
+            pricesColumn.className = 'prices-column';
+            
+            const quantityColumn = document.createElement('div');
+            quantityColumn.className = 'quantity-column';
+            
+            const totalsColumn = document.createElement('div');
+            totalsColumn.className = 'totals-column';
+            
+            const deleteColumn = document.createElement('div');
+            deleteColumn.className = 'delete-column';
+
+            // Додаємо товари до колонок
+            cart.forEach((item, index) => {
+                // Зображення
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.alt = item.name;
+                img.className = 'cart-image';
+                imagesColumn.appendChild(img);
+
+                // Назва товару
+                const name = document.createElement('div');
+                name.className = 'product-name';
+                name.textContent = item.name;
+                productNamesColumn.appendChild(name);
+
+                // Ціна
+                const price = document.createElement('div');
+                price.className = 'price';
+                price.textContent = `$${item.price}`;
+                pricesColumn.appendChild(price);
+
+                // Кількість
+                const quantityControl = document.createElement('div');
+                quantityControl.className = 'quantity-control';
+                
+                const minusBtn = document.createElement('button');
+                minusBtn.className = 'quantity-btn minus';
+                minusBtn.textContent = '-';
+                minusBtn.onclick = () => updateQuantity(index, -1);
+                
+                const quantityValue = document.createElement('span');
+                quantityValue.className = 'quantity-value';
+                quantityValue.textContent = item.quantity;
+                
+                const plusBtn = document.createElement('button');
+                plusBtn.className = 'quantity-btn plus';
+                plusBtn.textContent = '+';
+                plusBtn.onclick = () => updateQuantity(index, 1);
+                
+                quantityControl.appendChild(minusBtn);
+                quantityControl.appendChild(quantityValue);
+                quantityControl.appendChild(plusBtn);
+                quantityColumn.appendChild(quantityControl);
+
+                // Загальна вартість
+                const total = document.createElement('div');
+                total.className = 'total';
+                total.textContent = `$${item.price * item.quantity}`;
+                totalsColumn.appendChild(total);
+
+                // Кнопка видалення
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.onclick = () => removeFromCart(index);
+                
+                const deleteIcon = document.createElement('img');
+                deleteIcon.src = 'https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/delete.png';
+                deleteIcon.alt = 'Delete';
+                deleteIcon.className = 'delete-icon';
+                
+                deleteBtn.appendChild(deleteIcon);
+                deleteColumn.appendChild(deleteBtn);
+            });
+
+            // Додаємо колонки до контейнера
+            container.appendChild(imagesColumn);
+            container.appendChild(productNamesColumn);
+            container.appendChild(pricesColumn);
+            container.appendChild(quantityColumn);
+            container.appendChild(totalsColumn);
+            container.appendChild(deleteColumn);
+        }
+
+        // Функція для оновлення підсумків корзини
+        function updateCartSummary() {
+            const subtotalElement = document.getElementById('cart-subtotal-summary');
+            const totalElement = document.getElementById('cart-total-summary');
+            
+            if (subtotalElement && totalElement) {
+                const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                const shipping = 30; // Фіксована вартість доставки
+                const total = subtotal + shipping;
+                
+                subtotalElement.textContent = `$${subtotal}`;
+                totalElement.textContent = `$${total}`;
+            }
+        }
+
+        // Функція для оновлення кількості товару
+        function updateQuantity(index, change) {
+            if (cart[index]) {
+                cart[index].quantity += change;
+                
+                if (cart[index].quantity <= 0) {
+                    cart.splice(index, 1);
+                }
+                
+                updateCartDisplay();
+            }
+        }
+
+        // Функція для видалення товару з кошика
+        function removeFromCart(index) {
+            if (cart[index]) {
+                cart.splice(index, 1);
+                updateCartDisplay();
+            }
+        }
+
+        // Функція для очищення кошика
+        function clearCart() {
+            cart = [];
+            updateCartDisplay();
+        }
+
+        // Функція для показу сповіщення про додавання до кошика
+        function showAddToCartNotification(productName) {
+            // Створюємо сповіщення
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = 'rgba(185, 39, 112, 0.9)';
+            notification.style.color = 'white';
+            notification.style.padding = '15px 20px';
+            notification.style.borderRadius = '5px';
+            notification.style.zIndex = '10000';
+            notification.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+            notification.style.fontFamily = 'Montserrat, sans-serif';
+            notification.style.fontSize = '16px';
+            notification.style.transition = 'all 0.3s ease';
+            
+            notification.innerHTML = `
+                <div>Product "${productName}" has been added to the cart!</div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Автоматично видаляємо сповіщення через 3 секунди
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
         }
 
         // Додаємо обробники подій для навігації
@@ -6540,18 +6941,25 @@
             loadPage('user');
         });
 
+        // Додаємо обробник для іконки корзини
+        document.querySelector('.cart-icon').addEventListener('click', (e) => {
+            e.preventDefault();
+            openCartModal();
+        });
+
         // Завантажуємо домашню сторінку при завантаженні
         document.addEventListener('DOMContentLoaded', () => {
             loadPage('home');
+            updateCartDisplay();
         });
 
         // Функції для каталогу
         function changePage(pageNumber) {
-            alert('Перехід на сторінку ' + pageNumber);
+            // Логіка зміни сторінки без alert
         }
 
         function nextPage() {
-            alert('Перехід на наступну сторінку');
+            // Логіка переходу на наступну сторінку без alert
         }
 
         function focusSidebarSearch() {
@@ -6565,7 +6973,7 @@
             const searchInput = document.querySelector('.sidebar-search-input');
             if (searchInput) {
                 const searchTerm = searchInput.value;
-                alert('Пошук в сайдбарі: ' + searchTerm);
+                // Логіка пошуку без alert
             }
         }
 
@@ -6587,7 +6995,6 @@
         document.addEventListener('submit', (e) => {
             if (e.target && e.target.id === 'contactForm') {
                 e.preventDefault();
-                alert('Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.');
                 e.target.reset();
             }
         });
@@ -6598,6 +7005,8 @@
             productImages.forEach(img => {
                 img.addEventListener('click', (e) => {
                     e.preventDefault();
+                    const imageUrl = img.getAttribute('data-image') || img.src;
+                    sessionStorage.setItem('clickedProductImage', imageUrl);
                     loadPage('product');
                 });
             });
@@ -6634,75 +7043,24 @@
 
         // Функція для налаштування кнопки Add to Cart
         function setupAddToCart() {
-            const addToCartButtons = document.querySelectorAll('.product-add-to-cart, .product-add-to-cart-text, .product-recommendation-add-to-cart, .product-recommendation-add-to-cart-text, .add-to-cart-btn');
+            const addToCartButtons = document.querySelectorAll('.product-add-to-cart, .product-add-to-cart-text, .product-recommendation-add-to-cart, .product-recommendation-add-to-cart-text');
 
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
-                    let productName = 'товар';
-                    let productPrice = '$250';
-
-                    // Спроба отримати назву продукту
-                    const productTextElement = button.closest('.product-item')?.querySelector('.product-text') ||
-                        button.closest('.product-recommendation-item')?.querySelector('.product-line') ||
-                        button.closest('.product-content-section')?.querySelector('.product-text-line');
-
-                    if (productTextElement) {
-                        productName = productTextElement.textContent.trim();
+                    const productData = button.getAttribute('data-product');
+                    if (productData) {
+                        const product = JSON.parse(productData);
+                        addToCart(product);
                     }
-
-                    // Спроба отримати ціну продукту
-                    const priceElement = button.closest('.product-item')?.querySelector('.product-price') ||
-                        button.closest('.product-recommendation-item')?.querySelector('.product-recommendation-price') ||
-                        document.querySelector('.product-price');
-
-                    if (priceElement) {
-                        productPrice = priceElement.textContent.trim();
-                    }
-
-                    alert(`Товар "${productName}" за ціною ${productPrice} додано до кошика!`);
                 });
             });
         }
 
         // Функція для налаштування сторінки корзини
         function setupCartPage() {
-            // Додаємо функціонал для кнопок кількості
-            document.querySelectorAll('.quantity-control').forEach(control => {
-                const minusBtn = control.querySelector('.minus');
-                const plusBtn = control.querySelector('.plus');
-                const valueElement = control.querySelector('.quantity-value');
-
-                minusBtn.addEventListener('click', () => {
-                    let value = parseInt(valueElement.textContent);
-                    if (value > 1) {
-                        value--;
-                        valueElement.textContent = value;
-                    }
-                });
-
-                plusBtn.addEventListener('click', () => {
-                    let value = parseInt(valueElement.textContent);
-                    value++;
-                    valueElement.textContent = value;
-                });
-            });
-
-            // Додаємо функціонал для кнопок видалення
-            document.querySelectorAll('.delete-btn').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const row = this.closest('.table-rows-container');
-                    const index = Array.from(this.parentNode.children).indexOf(this);
-
-                    // Видаляємо відповідні елементи з усіх колонок
-                    const columns = row.querySelectorAll('div[class$="-column"]');
-                    columns.forEach(column => {
-                        if (column.children.length > index) {
-                            column.removeChild(column.children[index]);
-                        }
-                    });
-                });
-            });
+            updateCartPage();
+            updateCartSummary();
         }
 
         // Функції для модального вікна відгуків
@@ -6714,10 +7072,23 @@
             document.getElementById('reviews-modal').style.display = 'none';
         }
 
-        // Додаємо обробники подій для модального вікна
+        // Функції для модального вікна корзини
+        function openCartModal() {
+            updateCartModal();
+            document.getElementById('cart-modal').style.display = 'flex';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').style.display = 'none';
+        }
+
+        // Додаємо обробники подій для модальних вікон
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('close-reviews') || e.target.id === 'reviews-modal') {
                 closeReviewsModal();
+            }
+            if (e.target.classList.contains('close-cart') || e.target.id === 'cart-modal') {
+                closeCartModal();
             }
         });
 
@@ -6738,4 +7109,5 @@
         });
     </script>
 </body>
-</html> 
+
+</html>

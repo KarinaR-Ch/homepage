@@ -4607,7 +4607,7 @@
                             <div class="cart-text-item cart-shipping">Shipping</div>
                         </td>
                         <td class="cart-value-column">
-                            <div class="cart-text-item">$0</div>
+                            <div class="cart-text-item" id="cart-shipping-value">$0</div>
                         </td>
                     </tr>
                 </table>
@@ -5906,7 +5906,7 @@
                         </div>
                         <div class="summary-values">
                             <div class="summary-value" id="cart-subtotal-summary">$0</div>
-                            <div class="summary-value">$30</div>
+                            <div class="summary-value" id="cart-shipping-summary">$0</div>
                             <div class="summary-value" id="cart-total-summary">$0</div>
                         </div>
                     </div>
@@ -6740,12 +6740,18 @@
         // Функція для оновлення модального вікна кошика
         function updateCartModal() {
             const subtotalElement = document.getElementById('cart-subtotal');
+            const shippingElement = document.getElementById('cart-shipping-value');
             const totalElement = document.getElementById('cart-total');
             
-            if (subtotalElement && totalElement) {
+            if (subtotalElement && shippingElement && totalElement) {
                 const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                // Доставка 30, якщо є товари, інакше 0
+                const shipping = cart.length > 0 ? 30 : 0;
+                const total = subtotal + shipping;
+
                 subtotalElement.textContent = `$${subtotal}`;
-                totalElement.textContent = `$${subtotal}`;
+                shippingElement.textContent = `$${shipping}`;
+                totalElement.textContent = `$${total}`;
             }
         }
 
@@ -6851,14 +6857,16 @@
         // Функція для оновлення підсумків корзини
         function updateCartSummary() {
             const subtotalElement = document.getElementById('cart-subtotal-summary');
+            const shippingElement = document.getElementById('cart-shipping-summary');
             const totalElement = document.getElementById('cart-total-summary');
             
-            if (subtotalElement && totalElement) {
+            if (subtotalElement && shippingElement && totalElement) {
                 const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-                const shipping = 30; // Фіксована вартість доставки
+                const shipping = cart.length > 0 ? 30 : 0; // Фіксована вартість доставки
                 const total = subtotal + shipping;
                 
                 subtotalElement.textContent = `$${subtotal}`;
+                shippingElement.textContent = `$${shipping}`;
                 totalElement.textContent = `$${total}`;
             }
         }

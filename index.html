@@ -4435,6 +4435,28 @@
                 font-size: 16px;
             }
         }
+
+        /* НОВІ СТИЛІ ДЛЯ ПЕРЕКРЕСЛЕНИХ ЦІН */
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-right: 5px;
+            font-size: 16px;
+        }
+
+        .new-price {
+            color: #000;
+            font-weight: bold;
+            font-size: 19px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
@@ -4707,28 +4729,40 @@
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo.png" alt="Product 1" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo.png">
                                 <div class="sale-label">SALE</div>
                                 <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
-                                <div class="product-price">$250</div>
+                                <div class="price-container">
+                                    <span class="old-price">$277.78</span>
+                                    <span class="new-price">$250</span>
+                                </div>
                                 <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo.png"}'>Add to Cart</button>
                             </div>
                             <div class="product-item">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(1).png" alt="Product 2" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(1).png">
                                 <div class="sale-label">SALE</div>
                                 <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
-                                <div class="product-price">$200</div>
+                                <div class="price-container">
+                                    <span class="old-price">$222.22</span>
+                                    <span class="new-price">$200</span>
+                                </div>
                                 <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(1).png"}'>Add to Cart</button>
                             </div>
                             <div class="product-item">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(2).png" alt="Product 3" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(2).png">
                                 <div class="sale-label">SALE</div>
                                 <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
-                                <div class="product-price">$300</div>
+                                <div class="price-container">
+                                    <span class="old-price">$333.33</span>
+                                    <span class="new-price">$300</span>
+                                </div>
                                 <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 300, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(2).png"}'>Add to Cart</button>
                             </div>
                             <div class="product-item">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(3).png" alt="Product 4" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(3).png">
                                 <div class="sale-label">SALE</div>
                                 <div class="product-text">Vel vestibulum elit<br>tuvel euqen</div>
-                                <div class="product-price">$350</div>
+                                <div class="price-container">
+                                    <span class="old-price">$388.89</span>
+                                    <span class="new-price">$350</span>
+                                </div>
                                 <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 350, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/photo%20(3).png"}'>Add to Cart</button>
                             </div>
                         </div>
@@ -4774,7 +4808,10 @@
                                     <div>Vel vestibulum elit</div>
                                     <div>tuvel euqen.</div>
                                 </div>
-                                <div class="new-product-price">$450</div>
+                                <div class="price-container">
+                                    <span class="old-price">$500.00</span>
+                                    <span class="new-price">$450</span>
+                                </div>
                                 <button class="new-view-button">View Product</button>
                             </div>
                             <div class="new-product-wrapper">
@@ -4793,7 +4830,10 @@
                                     <div>Vel vestibulum elit</div>
                                     <div>tuvel euqen.</div>
                                 </div>
-                                <div class="new-product-price">$200</div>
+                                <div class="price-container">
+                                    <span class="old-price">$222.22</span>
+                                    <span class="new-price">$200</span>
+                                </div>
                                 <button class="new-view-button">View Product</button>
                             </div>
                         </div>
@@ -4945,7 +4985,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog1.png" alt="Валіза 1" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog1.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog1.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
@@ -4954,7 +4997,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog2.png" alt="Валіза 2" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog2.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog2.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
@@ -4963,7 +5009,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png" alt="Валіза 3" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
@@ -4974,7 +5023,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog4.png" alt="Валіза 4" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog4.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog4.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
@@ -4983,7 +5035,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog5.png" alt="Валіза 5" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog5.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog5.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
@@ -4992,7 +5047,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog6.png" alt="Валіза 6" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog6.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog6.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
@@ -5003,7 +5061,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog7.png" alt="Валіза 7" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog7.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog7.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
@@ -5012,7 +5073,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog8.png" alt="Валіза 8" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog8.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog8.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
@@ -5021,7 +5085,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog9.png" alt="Валіза 9" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog9.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog9.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
@@ -5032,7 +5099,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog10.png" alt="Валіза 10" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog10.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog10.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
@@ -5041,7 +5111,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog11.png" alt="Валіза 11" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog11.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog11.png"}'>Add To Cart</button>
                                     </div>
                                     <div class="image-container">
@@ -5050,7 +5123,10 @@
                                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog12.png" alt="Валіза 12" class="product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog12.png">
                                         </div>
                                         <div class="image-text">Vel vestibulum elit<br>tuvel euqen.</div>
-                                        <div class="price">$250</div>
+                                        <div class="price-container">
+                                            <span class="old-price">$277.78</span>
+                                            <span class="new-price">$250</span>
+                                        </div>
                                         <button class="add-to-cart-btn" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 250, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog12.png"}'>Add To Cart</button>
                                     </div>
                                 </div>
@@ -5723,7 +5799,10 @@
                                 <div class="product-details">
                                     <p class="product-line">Vel vestibulum elit</p>
                                     <p class="product-line">tuvel euqen.</p>
-                                    <p class="product-recommendation-price">$200</p>
+                                    <div class="price-container">
+                                        <span class="old-price">$222.22</span>
+                                        <span class="new-price">$200</span>
+                                    </div>
                                     <div class="product-recommendation-add-to-cart" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like1.png"}'>
                                         <span class="product-recommendation-add-to-cart-text">Add To Cart</span>
                                     </div>
@@ -5735,7 +5814,7 @@
                                 <div class="product-details">
                                     <p class="product-line">Vel vestibulum elit</p>
                                     <p class="product-line">tuvel euqen.</p>
-                                    <p class="product-recommendation-price">$200</p>
+                                    <div class="product-recommendation-price">$200</div>
                                     <div class="product-recommendation-add-to-cart" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/catalog3.png"}'>
                                         <span class="product-recommendation-add-to-cart-text">Add To Cart</span>
                                     </div>
@@ -5750,7 +5829,10 @@
                                 <div class="product-details">
                                     <p class="product-line">Vel vestibulum elit</p>
                                     <p class="product-line">tuvel euqen.</p>
-                                    <p class="product-recommendation-price">$200</p>
+                                    <div class="price-container">
+                                        <span class="old-price">$222.22</span>
+                                        <span class="new-price">$200</span>
+                                    </div>
                                     <div class="product-recommendation-add-to-cart" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like3.png"}'>
                                         <span class="product-recommendation-add-to-cart-text">Add To Cart</span>
                                     </div>
@@ -5762,7 +5844,7 @@
                                 <div class="product-details">
                                     <p class="product-line">Vel vestibulum elit</p>
                                     <p class="product-line">tuvel euqen.</p>
-                                    <p class="product-recommendation-price">$200</p>
+                                    <div class="product-recommendation-price">$200</div>
                                     <div class="product-recommendation-add-to-cart" data-product='{"name": "Vel vestibulum elit tuvel euqen", "price": 200, "image": "https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/Like4.png"}'>
                                         <span class="product-recommendation-add-to-cart-text">Add To Cart</span>
                                     </div>

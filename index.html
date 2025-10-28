@@ -4910,7 +4910,7 @@
                                     <div>Curabitur vulputate arcu odio, ac facilisis diam</div>
                                     <div>accumsan ut. Ut imperdiet et leo in vulputate.</div>
                                 </div>
-                                <div class="discount-button">
+                                <div class="discount-button" data-action="goto-catalog">
                                     <div class="discount-button-text">Get Discount</div>
                                 </div>
                             </div>
@@ -4926,7 +4926,7 @@
                     </div>
                     <div class="paragraph-1">Nullam pulvinar felis at metus.</div>
                     <div class="paragraph-2">Phasellus risus turpis, pretium sit amet magna non, molestie ultricies enim.</div>
-                    <div class="button">
+                    <div class="button" data-action="goto-catalog">
                         <div class="button-text">View All Items</div>
                     </div>
                 </div>
@@ -5005,7 +5005,7 @@
                             <div class="offer-description offer-description-line1">Curabitur vulputate arcu odio, ac facilisis diam</div>
                             <div class="offer-description">accumsan ut. Ut imperdiet et leo in vulputate.</div>
                             <div class="offer-button-container">
-                                <button class="offer-button">GET OFFER TODAY</button>
+                                <button class="offer-button" data-action="goto-catalog">GET OFFER TODAY</button>
                             </div>
                         </div>
                     </div>
@@ -5022,7 +5022,7 @@
                                     <div>tuvel euqen.</div>
                                 </div>
                                 <div class="new-product-price">$150</div>
-                                <button class="new-view-button">View Product</button>
+                                <button class="new-view-button" data-action="goto-catalog">View Product</button>
                             </div>
                             <div class="new-product-wrapper">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product2.png" alt="Product 2" class="new-product-image product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product2.png">
@@ -5035,7 +5035,7 @@
                                     <span class="old-price">$500.00</span>
                                     <span class="new-price">$450</span>
                                 </div>
-                                <button class="new-view-button">View Product</button>
+                                <button class="new-view-button" data-action="goto-catalog">View Product</button>
                             </div>
                             <div class="new-product-wrapper">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product3.png" alt="Product 3" class="new-product-image product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product3.png">
@@ -5044,7 +5044,7 @@
                                     <div>tuvel euqen.</div>
                                 </div>
                                 <div class="new-product-price">$250</div>
-                                <button class="new-view-button">View Product</button>
+                                <button class="new-view-button" data-action="goto-catalog">View Product</button>
                             </div>
                             <div class="new-product-wrapper">
                                 <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product4.png" alt="Product 4" class="new-product-image product-image" data-page="product" data-image="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/product4.png">
@@ -5057,7 +5057,7 @@
                                     <span class="old-price">$222.22</span>
                                     <span class="new-price">$200</span>
                                 </div>
-                                <button class="new-view-button">View Product</button>
+                                <button class="new-view-button" data-action="goto-catalog">View Product</button>
                             </div>
                         </div>
                     </div>
@@ -5557,7 +5557,7 @@
                     <div class="section-container">
                         <div class="left-side">
                             <div class="new-arrivals-title">New Arrivals Every Week</div>
-                            <button class="see-all-button">See All Models</button>
+                            <button class="see-all-button" data-action="goto-catalog">See All Models</button>
                         </div>
                         <div class="right-side">
                             <img src="https://raw.githubusercontent.com/KarinaR-Ch/suitcases/refs/heads/main/ac06fd7c37d57115174b35d848fa80e8da9b50b3.jpg" alt="Right side image">
@@ -5603,7 +5603,7 @@
                             <div class="offer-description offer-description-line1">Curabitur vulputate arcu odio, ac facilisis diam</div>
                             <div class="offer-description">accumsan ut. Ut imperdiet et leo in vulputate.</div>
                             <div class="offer-button-container">
-                                <button class="offer-button">GET OFFER TODAY</button>
+                                <button class="offer-button" data-action="goto-catalog">GET OFFER TODAY</button>
                             </div>
                         </div>
                     </div>
@@ -7445,6 +7445,19 @@
             const passwordInput = document.getElementById('password');
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
+        });
+
+        // Додаємо обробник для кнопок з data-action="goto-catalog"
+        document.addEventListener('click', function(e) {
+            let target = e.target;
+            // Якщо клікнули на дочірній елемент, то піднімаємося до елемента з data-action
+            if (!target.hasAttribute('data-action')) {
+                target = target.closest('[data-action]');
+            }
+            if (target && target.getAttribute('data-action') === 'goto-catalog') {
+                e.preventDefault();
+                loadPage('catalog');
+            }
         });
     </script>
 </body>

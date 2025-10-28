@@ -4457,6 +4457,196 @@
             gap: 8px;
             margin-top: 10px;
         }
+
+        /* Стилі для модального вікна логіну */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 480px;
+            height: 384px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-login {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 100%;
+            margin-bottom: 8px;
+            color: #333;
+            width: 340px;
+            text-align: left;
+        }
+
+        .required::after {
+            content: " *";
+            color: #b92770;
+        }
+
+        .login-container input[type="email"],
+        .login-container input[type="password"],
+        .login-container input[type="text"] {
+            width: 340px;
+            height: 40px;
+            border: 2px solid rgba(185, 39, 112, 0.5);
+            border-radius: 4px;
+            padding: 0 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .login-container input[type="email"]:focus,
+        .login-container input[type="password"]:focus,
+        .login-container input[type="text"]:focus {
+            outline: none;
+            border-color: rgba(185, 39, 112, 1);
+        }
+
+        .submit-btn {
+            width: 340px;
+            height: 40px;
+            background-color: #b92770;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            background-color: #9c1f5d;
+        }
+
+        .options-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 340px;
+            margin-top: 15px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 9px;
+            line-height: 100%;
+            color: rgba(114, 113, 116, 1);
+        }
+
+        .remember-checkbox {
+            width: 12px;
+            height: 12px;
+            border: 1px solid rgba(114, 113, 116, 1);
+            margin-right: 6px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .forgot-password {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 9px;
+            line-height: 100%;
+        }
+
+        .forgot-password a {
+            color: #b92770;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .password-container {
+            position: relative;
+            width: 340px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b92770;
+            font-size: 18px;
+            user-select: none;
+        }
+
+        .toggle-password::after {
+            content: "👁";
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                width: 90%;
+                max-width: 480px;
+                height: auto;
+                padding: 20px;
+            }
+
+            .form-group label,
+            .login-container input[type="email"],
+            .login-container input[type="password"],
+            .login-container input[type="text"],
+            .submit-btn,
+            .options-container {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -4514,6 +4704,39 @@
     <!-- Контейнер для вмісту -->
     <div class="content-container" id="content-container">
         <!-- Тут буде відображатися вміст сторінок -->
+    </div>
+
+    <!-- Модальне вікно для логіну -->
+    <div id="login-modal" class="login-modal">
+        <div class="login-container">
+            <span class="close-login" onclick="closeLoginModal()">×</span>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email" class="required">Email address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="required">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" required>
+                        <div class="toggle-password" id="togglePassword"></div>
+                    </div>
+                </div>
+
+                <div class="options-container">
+                    <div class="remember-me">
+                        <div class="remember-checkbox"></div>
+                        Remember me
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Log in</button>
+            </form>
+        </div>
     </div>
 
     <!-- Модальне вікно для відгуків -->
@@ -7025,10 +7248,10 @@
             });
         });
 
-        // Додаємо обробник для іконки користувача
+        // ЗМІНА: Змінюємо обробник для іконки користувача
         document.querySelector('.user-icon').addEventListener('click', (e) => {
             e.preventDefault();
-            loadPage('user');
+            openLoginModal();
         });
 
         // Додаємо обробник для іконки корзини
@@ -7153,6 +7376,15 @@
             updateCartSummary();
         }
 
+        // Функції для модального вікна логіну
+        function openLoginModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').style.display = 'none';
+        }
+
         // Функції для модального вікна відгуків
         function openReviewsModal() {
             document.getElementById('reviews-modal').style.display = 'flex';
@@ -7174,6 +7406,9 @@
 
         // Додаємо обробники подій для модальних вікон
         document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('close-login') || e.target.id === 'login-modal') {
+                closeLoginModal();
+            }
             if (e.target.classList.contains('close-reviews') || e.target.id === 'reviews-modal') {
                 closeReviewsModal();
             }
@@ -7196,6 +7431,20 @@
 
                 quantityElement.textContent = quantity;
             }
+        });
+
+        // Додаємо обробник для форми логіну
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            closeLoginModal();
+            loadPage('user');
+        });
+
+        // Додаємо обробник для перемикання видимості пароля
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
         });
     </script>
 </body>
